@@ -1,0 +1,15 @@
+﻿@using HaSe.Pages.Controls
+@model HaSe.Facade.Contoso.DepartmentViewModel
+
+@Html.EditItem(model => model.Name)
+@Html.EditItem(model => model.Budget)
+@Html.EditItem(model => model.StartDate)
+@* @Html.EditItem(model => model.InstructorId) *@
+
+<div class="form-group">
+    <label asp-for="InstructorId" class="control-label"></label>
+    <select asp-for="InstructorId" class="form-control" asp-items="ViewBag.Instructors">
+        <option value="">-- Select Instructor --</option>
+    </select>
+    <span asp-validation-for="InstructorId" class="text-danger" />
+</div>

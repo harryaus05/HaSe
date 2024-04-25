@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_Layout";
+    var prevDisabled = !ViewBag.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !ViewBag.HasNextPage ? "disabled" : "";
+    var pageNumber = ViewBag.PageNumber;
+    var searchString = ViewBag.SearchString;
+    var sortOrder = ViewBag.SortOrder;
+    var totalPages = ViewBag.TotalPages;
+    var message = $"Page {pageNumber} from total of {totalPages}";
+}
+
+<h1>Index</h1>
+<h4>@ViewData["Title"]</h4>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@searchString" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+@RenderBody()
+
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="1"
+   asp-route-searchString="@searchString"
+   class="btn btn-default @nextDisabled">
+    First
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="@(pageNumber - 1)"
+   asp-route-searchString="@searchString"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+    @message
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="@(pageNumber + 1)"
+   asp-route-searchString="@searchString"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="0"
+   asp-route-searchString="@searchString"
+   class="btn btn-default @nextDisabled">
+    Last
+</a>

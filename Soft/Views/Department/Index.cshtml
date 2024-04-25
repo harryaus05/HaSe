@@ -1,0 +1,11 @@
+﻿@using HaSe.Pages.Controls
+@model IEnumerable<HaSe.Facade.Contoso.DepartmentViewModel>
+
+@{
+    ViewData["Title"] = "Department";
+    Layout = "_Index";
+}
+
+@Html.ShowTable(Model, (string)ViewBag.SortOrder, (string)ViewBag.SearchString, (int)ViewBag.PageNumber)
+
+

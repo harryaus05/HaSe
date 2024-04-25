@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HaSe.Tests.Helpers.AbstractTests&lt;TClass, TBaseClass&gt;" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAIAAAIAAAACAAAAABAgQAAAAAAAIAEAA=</HashCode>
+      <FileName>AbstractTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Tests.Helpers.SealedTests&lt;TClass, TBaseClass&gt;" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SealedTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Tests.Helpers.ClassTests&lt;TClass, TBaseClass&gt;" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Tests.Helpers.BaseTests" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAABAAAAAAgAAAAAACAAAACBAAAAAAAAAACAAIA=</HashCode>
+      <FileName>BaseTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HaSe.Tests.Helpers.SealedNewTests&lt;TClass, TBaseClass&gt;" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>SealedNewTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
