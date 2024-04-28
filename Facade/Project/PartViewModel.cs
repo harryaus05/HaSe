@@ -12,6 +12,6 @@ namespace HaSe.Facade.Project {
         //public int Credits { get; set; }
 
         [DisplayName("Department Id")] 
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
     }
 }
