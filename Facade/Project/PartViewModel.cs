@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HaSe.Facade.Project {
     public sealed class PartViewModel : EntityViewModel {
-        [DisplayName("Description")]
-        [Required, MinLength(3, ErrorMessage = "Description needs to be at least 3 characters")]
+        [DisplayName("Name")]
+        [Required, MinLength(3, ErrorMessage = "Name needs to be at least 3 characters")]
         public string Name { get; set; }
 
         [DisplayName("Type")]

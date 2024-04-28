@@ -5,7 +5,7 @@ using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Soft.Controllers {
-    public class PartSpecificationController(IPartSpecificationsRepo repo, IInstructorsRepo? instructorsRepo = null) : BaseController<PartSpecification, PartSpecificationViewModel>(repo) {
+    public class PartSpecificationController(IPartSpecificationsRepo repo, IPartsRepo? partsRepo = null) : BaseController<PartSpecification, PartSpecificationViewModel>(repo) {
         protected override string selectItemTextField => nameof(PartSpecificationViewModel.Description);
         protected override PartSpecification ToModel(PartSpecificationViewModel viewmodel) {
             return new PartSpecification(PropertyCopier.CopyPropertiesFrom<PartSpecificationViewModel, PartSpecificationData>(viewmodel));
@@ -13,9 +13,9 @@ namespace HaSe.Soft.Controllers {
 
         protected override async Task PopulateRelatedItems(PartSpecification? model) {
             await base.PopulateRelatedItems(model);
-            if (instructorsRepo is null)
+            if (partsRepo is null)
                 return;
-            ViewBag.Instructors = await new InstructorController(instructorsRepo).SelectListAsync();
+            ViewBag.Parts = await new PartsController(partsRepo).SelectListAsync();
         }
     }
 }
