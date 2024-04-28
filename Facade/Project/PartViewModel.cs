@@ -8,7 +8,7 @@ namespace HaSe.Facade.Project {
         public string Name { get; set; }
 
         [DisplayName("Type")]
-        [Required, MinLength(3, ErrorMessage = "Type needs to be at least 3 characters")]
+        [Required(ErrorMessage = "Type needs to be at least 3 characters")]
         public string Type { get; set; }
 
     }

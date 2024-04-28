@@ -2,5 +2,15 @@
 @model HaSe.Facade.Project.PartViewModel
 
 @Html.EditItem(model => model.Name)
-@Html.EditItem(model => model.Type)
 
+
+<div class="form-group">
+    <label asp-for="Type" class="control-label"></label>
+    <select asp-for="Type" class="form-control">
+        <option value="">-- Select Type --</option>
+        <option value="Raw Material">Raw material</option>
+        <option value="Subassembly">Subassembly</option>
+        <option value="Finished Good">Finished good</option>
+    </select>
+    <span asp-validation-for="Type" class="text-danger" />
+</div>
