@@ -11,6 +11,5 @@ public sealed class PartDbInitializer(DbContext db, DbSet<PartData> set) : DbIni
         Item.Name = $"Part {index} name";
         Item.Type = $"Part {index} type";
         //Item.Credits = GetRandom.Bool() ? 6 : 12;
-        Item.DepartmentId = index % 100 + 1;
     }
 }
