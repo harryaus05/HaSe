@@ -1,4 +1,4 @@
-﻿using HaSe.Data.Contoso;
+﻿using HaSe.Data.Project;
 using HaSe.Helpers.Methods;
 using Microsoft.EntityFrameworkCore;
 

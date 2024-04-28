@@ -1,5 +1,5 @@
 ﻿using HaSe.Data;
-using HaSe.Data.Contoso;
+using HaSe.Data.Project;
 using HaSe.Tests.Helpers;
 
 namespace HaSe.Tests.Data.Contoso;

@@ -1,5 +1,4 @@
-﻿using HaSe.Data.Contoso;
-using HaSe.Data.Project;
+﻿using HaSe.Data.Project;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaSe.Infra.Project

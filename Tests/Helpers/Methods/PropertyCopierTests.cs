@@ -1,5 +1,4 @@
-﻿using HaSe.Data.Contoso;
-using HaSe.Data.Project;
+﻿using HaSe.Data.Project;
 using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 

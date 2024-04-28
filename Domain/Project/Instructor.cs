@@ -1,4 +1,4 @@
-﻿using HaSe.Data.Contoso;
+﻿using HaSe.Data.Project;
 
 namespace HaSe.Domain.Project {
     public sealed class Instructor(InstructorData? data) : Entity<InstructorData>(data) {

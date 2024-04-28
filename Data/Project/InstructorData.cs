@@ -1,4 +1,4 @@
-﻿namespace HaSe.Data.Contoso
+﻿namespace HaSe.Data.Project
 {
     public sealed class InstructorData : EntityData {
         public string? FirstName { get; set; }

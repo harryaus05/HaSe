@@ -1,4 +1,4 @@
-﻿using HaSe.Data.Contoso;
+﻿using HaSe.Data.Project;
 using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Facade.Project;

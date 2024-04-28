@@ -1,4 +1,4 @@
-﻿namespace HaSe.Data.Contoso {
+﻿namespace HaSe.Data.Project {
     public sealed class DepartmentData : EntityData {
         public string? Name { get; set; }
         public decimal Budget { get; set; }
