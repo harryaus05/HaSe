@@ -1,15 +1,16 @@
 ﻿using HaSe.Data.Contoso;
+using HaSe.Data.Project;
 using HaSe.Domain;
 using HaSe.Helpers.Methods;
 using HaSe.Tests.Helpers;
 
 namespace HaSe.Tests.Domain {
-    [TestClass] public class EntityTests : AbstractTests<Entity<CourseData>, object> {
-        private class _Entity(CourseData? data) : Entity<CourseData>(data) { }
+    [TestClass] public class EntityTests : AbstractTests<Entity<PartData>, object> {
+        private class _Entity(PartData? data) : Entity<PartData>(data) { }
 
         private dynamic? _data;
-        protected override Entity<CourseData>? CreateObject() {
-            _data = GetRandom.Object<CourseData>();
+        protected override Entity<PartData>? CreateObject() {
+            _data = GetRandom.Object<PartData>();
             return new _Entity(_data);
         }
 

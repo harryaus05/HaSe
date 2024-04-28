@@ -1,4 +1,5 @@
 ﻿using HaSe.Data.Contoso;
+using HaSe.Data.Project;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaSe.Infra.Contoso
@@ -10,7 +11,7 @@ namespace HaSe.Infra.Contoso
         public DbSet<StudentData> Student { get; set; } = default!;
         public DbSet<InstructorData> Instructor { get; set; } = default!;
         public DbSet<DepartmentData> Department { get; set; } = default!;
-        public DbSet<CourseData> Courses { get; set; } = default!;
+        public DbSet<PartData> Parts { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,7 +25,7 @@ namespace HaSe.Infra.Contoso
             ToTable<InstructorData>(builder, nameof(Instructor), _contosoSchema);
             var type = ToTable<DepartmentData>(builder, nameof(Department), _contosoSchema);
             SetType(type, x => x.Budget, _decimal);
-            ToTable<CourseData>(builder, nameof(Courses), _contosoSchema);
+            ToTable<PartData>(builder, nameof(Parts), _contosoSchema);
         }
     }
 }

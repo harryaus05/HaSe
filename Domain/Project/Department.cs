@@ -1,6 +1,6 @@
 ﻿using HaSe.Data.Contoso;
 
-namespace HaSe.Domain.Contoso {
+namespace HaSe.Domain.Project {
     public sealed class Department(DepartmentData? data) : Entity<DepartmentData>(data) {
         public string? Name => _data.Name;
         public decimal Budget => _data.Budget;

@@ -1,6 +1,6 @@
 ﻿using HaSe.Data.Contoso;
 
-namespace HaSe.Domain.Contoso {
+namespace HaSe.Domain.Project {
     public sealed class Instructor(InstructorData? data) : Entity<InstructorData>(data) {
         public string? FirstName => _data.FirstName;
         public string? LastName => _data.LastName;

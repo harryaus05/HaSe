@@ -1,5 +1,5 @@
 ﻿using HaSe.Data.Contoso;
-using HaSe.Domain.Contoso;
+using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Facade.Contoso;
 using HaSe.Helpers.Methods;

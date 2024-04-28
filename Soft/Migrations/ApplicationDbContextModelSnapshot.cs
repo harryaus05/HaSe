@@ -224,7 +224,7 @@ namespace HaSe.Soft.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HaSe.Domain.Course", b =>
+            modelBuilder.Entity("HaSe.Domain.Part", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,13 +238,13 @@ namespace HaSe.Soft.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses", "Contoso");
+                    b.ToTable("Parts", "Contoso");
                 });
 
             modelBuilder.Entity("HaSe.Domain.Department", b =>

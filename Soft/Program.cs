@@ -19,7 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<ICoursesRepo, CoursesRepo>();
+builder.Services.AddTransient<IPartsRepo, PartsRepo>();
 builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
 builder.Services.AddTransient<IDepartmentsRepo, DepartmentsRepo>();
 builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
@@ -64,7 +64,7 @@ static void EnsureDatabaseCreated(WebApplication app) {
 
 static async Task TryInitializeDatabase(WebApplication app) {
     var db = GetContext<ContosoDbContext>(app);
-    await new CourseDbInitializer(db, db.Courses).Initialize(10000);
+    await new CourseDbInitializer(db, db.Parts).Initialize(10000);
     await new DepartmentDbInitializer(db, db.Department).Initialize(10);
     await new InstructorDbInitializer(db, db.Instructor).Initialize(50);
     await new StudentDbInitializer(db, db.Student).Initialize(5000);

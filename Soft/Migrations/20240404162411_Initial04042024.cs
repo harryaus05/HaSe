@@ -51,7 +51,7 @@ namespace HaSe.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Courses",
+                name: "Parts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -276,7 +276,7 @@ namespace HaSe.Soft.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Parts");
 
             migrationBuilder.DropTable(
                 name: "Department");

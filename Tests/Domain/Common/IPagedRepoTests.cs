@@ -1,9 +1,9 @@
 ﻿using HaSe.Domain.Common;
-using HaSe.Domain.Contoso;
+using HaSe.Domain.Project;
 
 namespace HaSe.Tests.Domain.Common {
     [TestClass]
-    public class IPagedRepoTests : InterfaceTests<IPagedRepo<Course>, IOrderedRepo<Course>> {
+    public class IPagedRepoTests : InterfaceTests<IPagedRepo<Part>, IOrderedRepo<Part>> {
         [TestMethod] public void PageNumberTest() => PropertyTest<int?>();
         [TestMethod] public void PageTest() => PropertyTest<int>(false);
         [TestMethod] public void PageSizeTest() => PropertyTest<int>();

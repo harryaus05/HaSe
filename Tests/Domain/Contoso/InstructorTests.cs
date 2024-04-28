@@ -1,5 +1,5 @@
 ﻿using HaSe.Data.Contoso;
-using HaSe.Domain.Contoso;
+using HaSe.Domain.Project;
 
 namespace HaSe.Tests.Domain.Contoso {
     [TestClass]

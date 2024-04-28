@@ -29,8 +29,8 @@ namespace HaSe.Soft.Migrations
                 newSchema: "Contoso");
 
             migrationBuilder.RenameTable(
-                name: "Courses",
-                newName: "Courses",
+                name: "Parts",
+                newName: "Parts",
                 newSchema: "Contoso");
         }
 
@@ -53,9 +53,9 @@ namespace HaSe.Soft.Migrations
                 newName: "Department");
 
             migrationBuilder.RenameTable(
-                name: "Courses",
+                name: "Parts",
                 schema: "Contoso",
-                newName: "Courses");
+                newName: "Parts");
         }
     }
 }

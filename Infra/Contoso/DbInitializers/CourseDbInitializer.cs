@@ -1,16 +1,17 @@
 ﻿using HaSe.Data.Contoso;
+using HaSe.Data.Project;
 using HaSe.Helpers.Methods;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaSe.Infra.Contoso.DbInitializers;
 
-public sealed class CourseDbInitializer(DbContext db, DbSet<CourseData> set) : DbInitializer<CourseData>(db, set)
+public sealed class CourseDbInitializer(DbContext db, DbSet<PartData> set) : DbInitializer<PartData>(db, set)
 {
     protected override void SetValues(int index)
     {
         if (Item == null)
             return;
-        Item.Title = $"Course {index} title";
+        Item.Name = $"Part {index} title";
         Item.Credits = GetRandom.Bool() ? 6 : 12;
         Item.DepartmentId = index % 100 + 1;
     }

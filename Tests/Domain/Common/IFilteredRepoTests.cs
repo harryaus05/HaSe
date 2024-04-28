@@ -1,8 +1,8 @@
 ﻿using HaSe.Domain.Common;
-using HaSe.Domain.Contoso;
+using HaSe.Domain.Project;
 
 namespace HaSe.Tests.Domain.Common;
 
-[TestClass] public class IFilteredRepoTests : InterfaceTests<IFilteredRepo<Course>, ICrudRepo<Course>> {
+[TestClass] public class IFilteredRepoTests : InterfaceTests<IFilteredRepo<Part>, ICrudRepo<Part>> {
     [TestMethod] public void SearchStringTest() => PropertyTest<string>();
 }
