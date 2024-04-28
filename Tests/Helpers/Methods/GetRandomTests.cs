@@ -1,4 +1,4 @@
-﻿using HaSe.Facade.Contoso;
+﻿using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Tests.Helpers.Methods {

@@ -3,7 +3,7 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Common;
 
-namespace HaSe.Infra.Contoso {
+namespace HaSe.Infra.Project {
     public class StudentsRepo(ContosoDbContext context) : Repo<Student, StudentData>(context, context.Student), IStudentsRepo {
         protected override IQueryable<StudentData> AddSearchString(IQueryable<StudentData> sql) {
             return string.IsNullOrEmpty(SearchString) ? sql : 

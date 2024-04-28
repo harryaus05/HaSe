@@ -3,7 +3,7 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Common;
 
-namespace HaSe.Infra.Contoso
+namespace HaSe.Infra.Project
 {
     public class DepartmentsRepo(ContosoDbContext context) : Repo<Department,DepartmentData>(context, context.Department), IDepartmentsRepo
     {

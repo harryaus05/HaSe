@@ -3,7 +3,7 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Common;
 
-namespace HaSe.Infra.Contoso
+namespace HaSe.Infra.Project
 {
     public class InstructorsRepo(ContosoDbContext context) : Repo<Instructor, InstructorData>(context, context.Instructor), IInstructorsRepo
     {

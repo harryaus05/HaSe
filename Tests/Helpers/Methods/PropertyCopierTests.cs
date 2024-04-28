@@ -1,6 +1,6 @@
 ﻿using HaSe.Data.Contoso;
 using HaSe.Data.Project;
-using HaSe.Facade.Contoso;
+using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Tests.Helpers.Methods {
@@ -24,7 +24,7 @@ namespace HaSe.Tests.Helpers.Methods {
         private static Dictionary<Type, Type> TestData() {
             return new Dictionary<Type, Type>(){
                 {typeof(StudentData), typeof(StudentViewModel)},
-                {typeof(PartData), typeof(CourseViewModel)},
+                {typeof(PartData), typeof(PartViewModel)},
                 {typeof(DepartmentData), typeof(DepartmentViewModel)},
                 {typeof(InstructorData), typeof(InstructorViewModel)}
             };

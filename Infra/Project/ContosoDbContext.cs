@@ -2,7 +2,7 @@
 using HaSe.Data.Project;
 using Microsoft.EntityFrameworkCore;
 
-namespace HaSe.Infra.Contoso
+namespace HaSe.Infra.Project
 {
     public class ContosoDbContext(DbContextOptions<ContosoDbContext> options) : BaseDbContext<ContosoDbContext>(options)
     {

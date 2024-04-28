@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace HaSe.Facade.Contoso {
+namespace HaSe.Facade.Project {
     public sealed class InstructorViewModel : EntityViewModel {
         [DisplayName("First Name")] 
         public string? FirstName { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using HaSe.Infra.Contoso;
+using HaSe.Infra.Project;
 
 namespace HaSe.Soft.Data
 {

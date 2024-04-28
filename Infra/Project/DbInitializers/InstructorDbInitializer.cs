@@ -2,9 +2,9 @@
 using HaSe.Helpers.Methods;
 using Microsoft.EntityFrameworkCore;
 
-namespace HaSe.Infra.Contoso.DbInitializers;
+namespace HaSe.Infra.Project.DbInitializers;
 
-public sealed class StudentDbInitializer(DbContext db, DbSet<StudentData> set) : DbInitializer<StudentData>(db, set)
+public sealed class InstructorDbInitializer(DbContext db, DbSet<InstructorData> set) : DbInitializer<InstructorData>(db, set)
 {
     protected override void SetValues(int index)
     {
@@ -12,6 +12,6 @@ public sealed class StudentDbInitializer(DbContext db, DbSet<StudentData> set) :
             return;
         Item.FirstName = GetRandom.String();
         Item.LastName = GetRandom.String();
-        Item.EnrollmentDate = GetRandom.DateTime(DateTime.Now.AddYears(-20), DateTime.Now.AddYears(-5));
+        Item.HireDate = GetRandom.DateTime(DateTime.Now.AddYears(-20), DateTime.Now.AddYears(-5));
     }
 }

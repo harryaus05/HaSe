@@ -1,14 +1,13 @@
-﻿using HaSe.Data.Contoso;
-using HaSe.Data.Project;
+﻿using HaSe.Data.Project;
 using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
-using HaSe.Facade.Contoso;
+using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Soft.Controllers {
-    public class CoursesController(IPartsRepo repo, IDepartmentsRepo departmentsRepo) : BaseController<Part, CourseViewModel>(repo) {
-        protected override Part ToModel(CourseViewModel viewmodel) {
-            return new Part(PropertyCopier.CopyPropertiesFrom<CourseViewModel, PartData>(viewmodel));
+    public class PartsController(IPartsRepo repo, IDepartmentsRepo departmentsRepo) : BaseController<Part, PartViewModel>(repo) {
+        protected override Part ToModel(PartViewModel viewmodel) {
+            return new Part(PropertyCopier.CopyPropertiesFrom<PartViewModel, PartData>(viewmodel));
         }
 
         protected override async Task PopulateRelatedItems(Part? model) {

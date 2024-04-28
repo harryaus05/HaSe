@@ -2,7 +2,7 @@
 using HaSe.Helpers.Methods;
 using Microsoft.EntityFrameworkCore;
 
-namespace HaSe.Infra.Contoso.DbInitializers;
+namespace HaSe.Infra.Project.DbInitializers;
 
 public sealed class DepartmentDbInitializer(DbContext db, DbSet<DepartmentData> set) : DbInitializer<DepartmentData>(db, set)
 {

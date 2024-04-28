@@ -1,6 +1,6 @@
 using HaSe.Domain.Repos;
-using HaSe.Infra.Contoso;
-using HaSe.Infra.Contoso.DbInitializers;
+using HaSe.Infra.Project;
+using HaSe.Infra.Project.DbInitializers;
 using HaSe.Soft.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -64,7 +64,7 @@ static void EnsureDatabaseCreated(WebApplication app) {
 
 static async Task TryInitializeDatabase(WebApplication app) {
     var db = GetContext<ContosoDbContext>(app);
-    await new CourseDbInitializer(db, db.Parts).Initialize(10000);
+    await new PartDbInitializer(db, db.Parts).Initialize(10000);
     await new DepartmentDbInitializer(db, db.Department).Initialize(10);
     await new InstructorDbInitializer(db, db.Instructor).Initialize(50);
     await new StudentDbInitializer(db, db.Student).Initialize(5000);

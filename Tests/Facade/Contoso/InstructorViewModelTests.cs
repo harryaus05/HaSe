@@ -1,5 +1,5 @@
 ﻿using HaSe.Facade;
-using HaSe.Facade.Contoso;
+using HaSe.Facade.Project;
 using HaSe.Tests.Helpers;
 
 namespace HaSe.Tests.Facade.Contoso {

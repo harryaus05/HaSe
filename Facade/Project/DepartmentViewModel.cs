@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace HaSe.Facade.Contoso {
+namespace HaSe.Facade.Project {
     public sealed class DepartmentViewModel : EntityViewModel {
         [DisplayName("Name")]
         [Required, MinLength(2, ErrorMessage = "Name must have at least 2 characters."),

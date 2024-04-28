@@ -4,7 +4,7 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Common;
 
-namespace HaSe.Infra.Contoso
+namespace HaSe.Infra.Project
 {
     public class PartsRepo(ContosoDbContext context) : Repo<Part, PartData>(context, context.Parts), IPartsRepo
     {
@@ -13,7 +13,7 @@ namespace HaSe.Infra.Contoso
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.Name != null
                     && (s.Name.Contains(SearchString)
-                    || s.Credits.ToString().Contains(SearchString)
+                    //|| s.Credits.ToString().Contains(SearchString)
                     || s.DepartmentId.ToString().Contains(SearchString)));
         }
 

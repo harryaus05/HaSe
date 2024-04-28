@@ -1,6 +1,6 @@
 ﻿using HaSe.Domain.Common;
 using HaSe.Facade;
-using HaSe.Facade.Contoso;
+using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

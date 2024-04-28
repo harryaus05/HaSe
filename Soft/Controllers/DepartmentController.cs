@@ -1,7 +1,7 @@
 ﻿using HaSe.Data.Contoso;
 using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
-using HaSe.Facade.Contoso;
+using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Soft.Controllers {
