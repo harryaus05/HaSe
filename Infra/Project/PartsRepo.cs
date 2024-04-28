@@ -12,7 +12,7 @@ namespace HaSe.Infra.Project
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.Name != null
                     && (s.Name.Contains(SearchString)
-                    //|| s.Credits.ToString().Contains(SearchString)
+                    || s.Type.Contains(SearchString)
                     || s.DepartmentId.ToString().Contains(SearchString)));
         }
 

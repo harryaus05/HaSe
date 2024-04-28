@@ -2,8 +2,8 @@
 @model HaSe.Facade.Project.PartViewModel
 
 @Html.EditItem(model => model.Name)
-@* @Html.EditItem(model => model.Credits) *@
-@* @Html.EditItem(model => model.DepartmentId) *@
+@Html.EditItem(model => model.Type)
+@Html.EditItem(model => model.DepartmentId)
 
 <div class="form-group">
     <label asp-for="DepartmentId" class="control-label"></label>

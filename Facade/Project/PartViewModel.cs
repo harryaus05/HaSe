@@ -7,6 +7,9 @@ namespace HaSe.Facade.Project {
         [Required, MinLength(3, ErrorMessage = "Name needs to be at least 3 characters")]
         public string Name { get; set; }
 
+        [DisplayName("Type")]
+        [Required, MinLength(3, ErrorMessage = "Type needs to be at least 3 characters")]
+        public string Type { get; set; }
         //[DisplayName("Credits")]
         //[Required, Range(0, 12, ErrorMessage = "Credits must be between 0 and 12.")]
         //public int Credits { get; set; }
