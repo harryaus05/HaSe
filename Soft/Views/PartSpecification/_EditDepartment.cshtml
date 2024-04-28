@@ -1,0 +1,32 @@
+﻿@using HaSe.Pages.Controls
+@model HaSe.Facade.Project.PartSpecificationViewModel
+
+@Html.EditItem(model => model.Description)
+
+<div class="form-group">
+    <label asp-for="Type" class="control-label"></label>
+    <select asp-for="Type" class="form-control">
+        <option value="">-- Select Type --</option>
+        <option value="Constraint">Constraint</option>
+        <option value="Operating condition">Operating condition</option>
+        <option value="Tolerance">Tolerance</option>
+        <option value="Performance specification">Performance specification</option>
+        <option value="Testing requirement">Testing requirement</option>
+        <option value="Other specification">Other specification</option>
+    </select>
+    <span asp-validation-for="Type" class="text-danger" />
+</div>
+
+@Html.EditItem(model => model.DateDocumented)
+@Html.EditItem(model => model.Comment)
+
+@* @Html.EditItem(model => model.PartId) *@
+
+<div class="form-group">
+    <label asp-for="PartId" class="control-label"></label>
+    <select asp-for="PartId" class="form-control" asp-items="ViewBag.Parts">
+        <option value="">-- Select Part --</option>
+    </select>
+    <span asp-validation-for="PartId" class="text-danger" />
+</div>
+

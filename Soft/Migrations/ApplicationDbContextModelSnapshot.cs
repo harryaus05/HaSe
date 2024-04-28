@@ -31,7 +31,7 @@ namespace HaSe.Soft.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -212,14 +212,14 @@ namespace HaSe.Soft.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("UserId", "LoginProvider", "Description");
 
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
@@ -238,7 +238,7 @@ namespace HaSe.Soft.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -247,7 +247,7 @@ namespace HaSe.Soft.Migrations
                     b.ToTable("Parts", "Contoso");
                 });
 
-            modelBuilder.Entity("HaSe.Domain.Department", b =>
+            modelBuilder.Entity("HaSe.Domain.PartSpecification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -255,22 +255,22 @@ namespace HaSe.Soft.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Budget")
+                    b.Property<decimal>("Type")
                         .HasColumnType("decimal(16,4)");
 
-                    b.Property<int?>("InstructorId")
+                    b.Property<int?>("PartId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("DateDocumented")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department", "Contoso");
+                    b.ToTable("PartSpecification", "Contoso");
                 });
 
             modelBuilder.Entity("HaSe.Domain.Instructor", b =>

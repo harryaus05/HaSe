@@ -9,7 +9,7 @@ namespace HaSe.Infra.Project
         internal const string _decimal = "decimal(16,4)";
         public DbSet<StudentData> Student { get; set; } = default!;
         public DbSet<InstructorData> Instructor { get; set; } = default!;
-        public DbSet<DepartmentData> Department { get; set; } = default!;
+        public DbSet<PartSpecificationData> PartSpecification { get; set; } = default!;
         public DbSet<PartData> Parts { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -22,8 +22,9 @@ namespace HaSe.Infra.Project
         {
             ToTable<StudentData>(builder, nameof(Student), _contosoSchema);
             ToTable<InstructorData>(builder, nameof(Instructor), _contosoSchema);
-            var type = ToTable<DepartmentData>(builder, nameof(Department), _contosoSchema);
-            SetType(type, x => x.Budget, _decimal);
+            ToTable<PartSpecificationData>(builder, nameof(PartSpecification), _contosoSchema);
+            //var type = ToTable<PartSpecificationData>(builder, nameof(PartSpecification), _contosoSchema);
+            //SetType(type, x => x.Budget, _decimal);
             ToTable<PartData>(builder, nameof(Parts), _contosoSchema);
         }
     }

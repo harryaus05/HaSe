@@ -15,7 +15,7 @@ namespace HaSe.Soft.Controllers {
         protected internal async Task<SelectList> SelectListAsync() {
             repo.PageSize = repo.TotalItems;
             var departments = (await repo.GetAsync()).Select(ToViewModel);
-            return new SelectList(departments, nameof(DepartmentViewModel.Id), selectItemTextField);
+            return new SelectList(departments, nameof(PartSpecificationViewModel.Id), selectItemTextField);
         }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, int? pageNumber) {

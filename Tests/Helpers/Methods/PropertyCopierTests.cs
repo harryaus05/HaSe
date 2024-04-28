@@ -24,7 +24,7 @@ namespace HaSe.Tests.Helpers.Methods {
             return new Dictionary<Type, Type>(){
                 {typeof(StudentData), typeof(StudentViewModel)},
                 {typeof(PartData), typeof(PartViewModel)},
-                {typeof(DepartmentData), typeof(DepartmentViewModel)},
+                {typeof(PartSpecificationData), typeof(PartSpecificationViewModel)},
                 {typeof(InstructorData), typeof(InstructorViewModel)}
             };
         }

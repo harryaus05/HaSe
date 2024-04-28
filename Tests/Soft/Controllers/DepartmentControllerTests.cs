@@ -1,13 +1,13 @@
 ﻿namespace HaSe.Tests.Soft.Controllers {
     //[TestClass]
     //public class DepartmentControllerTests {
-    //    private Mock<IDepartmentsRepo> _mockRepo;
-    //    private DepartmentController _controller;
+    //    private Mock<IPartSpecificationsRepo> _mockRepo;
+    //    private PartSpecificationController _controller;
 
     //    [TestInitialize]
     //    public void TestInitialize() {
-    //        _mockRepo = new Mock<IDepartmentsRepo>();
-    //        _controller = new DepartmentController(_mockRepo.Object);
+    //        _mockRepo = new Mock<IPartSpecificationsRepo>();
+    //        _controller = new PartSpecificationController(_mockRepo.Object);
     //    }
 
     //    [TestMethod]
@@ -19,7 +19,7 @@
     //        var result = await _controller.Index(sortOrder, searchString, pageNumber) as ViewResult;
 
     //        Assert.IsNotNull(result);
-    //        var model = result.Model as List<DepartmentViewModel>;
+    //        var model = result.Model as List<PartSpecificationViewModel>;
     //        Assert.IsNotNull(model); 
     //    }
     //}

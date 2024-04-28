@@ -24,8 +24,8 @@ namespace HaSe.Soft.Migrations
                 newSchema: "Contoso");
 
             migrationBuilder.RenameTable(
-                name: "Department",
-                newName: "Department",
+                name: "PartSpecification",
+                newName: "PartSpecification",
                 newSchema: "Contoso");
 
             migrationBuilder.RenameTable(
@@ -48,9 +48,9 @@ namespace HaSe.Soft.Migrations
                 newName: "Instructor");
 
             migrationBuilder.RenameTable(
-                name: "Department",
+                name: "PartSpecification",
                 schema: "Contoso",
-                newName: "Department");
+                newName: "PartSpecification");
 
             migrationBuilder.RenameTable(
                 name: "Parts",

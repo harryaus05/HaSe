@@ -5,7 +5,7 @@ using HaSe.Tests.Helpers;
 namespace HaSe.Tests.Data.Contoso;
 
 [TestClass]
-public class DepartmentDataTests : SealedNewTests<DepartmentData, EntityData> {
+public class PartSpecificationDataTests : SealedNewTests<PartSpecificationData, EntityData> {
     [TestMethod] public void NameTest() => PropertyTest();
     [TestMethod] public void BudgetTest() => PropertyTest();
     [TestMethod] public void StartDateTest() => PropertyTest();

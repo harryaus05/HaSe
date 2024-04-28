@@ -21,7 +21,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IPartsRepo, PartsRepo>();
 builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
-builder.Services.AddTransient<IDepartmentsRepo, DepartmentsRepo>();
+builder.Services.AddTransient<IPartSpecificationsRepo, PartSpecificationsRepo>();
 builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
 
 var app = builder.Build();
@@ -65,7 +65,7 @@ static void EnsureDatabaseCreated(WebApplication app) {
 static async Task TryInitializeDatabase(WebApplication app) {
     var db = GetContext<ContosoDbContext>(app);
     await new PartDbInitializer(db, db.Parts).Initialize(10000);
-    await new DepartmentDbInitializer(db, db.Department).Initialize(10);
+    await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
     await new InstructorDbInitializer(db, db.Instructor).Initialize(50);
     await new StudentDbInitializer(db, db.Student).Initialize(5000);
 }

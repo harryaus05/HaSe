@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HaSe.Facade.Project {
     public sealed class StudentViewModel : EntityViewModel {
-        [DisplayName("First Name")] 
+        [DisplayName("First Description")] 
         public string? FirstName { get; set; }
 
-        [DisplayName("Last Name")] 
+        [DisplayName("Last Description")] 
         public string? LastName { get; set; }
 
         [DataType(DataType.Date)]

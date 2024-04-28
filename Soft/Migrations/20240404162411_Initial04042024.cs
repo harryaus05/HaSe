@@ -66,7 +66,7 @@ namespace HaSe.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "PartSpecification",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -279,7 +279,7 @@ namespace HaSe.Soft.Migrations
                 name: "Parts");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "PartSpecification");
 
             migrationBuilder.DropTable(
                 name: "Instructor");
