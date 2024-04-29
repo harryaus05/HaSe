@@ -5,7 +5,7 @@ using HaSe.Infra.Common;
 
 namespace HaSe.Infra.Project
 {
-    public class PartsRepo(ContosoDbContext context) : Repo<Part, PartData>(context, context.Parts), IPartsRepo
+    public class PartsRepo(ProjectDbContext context) : Repo<Part, PartData>(context, context.Parts), IPartsRepo
     {
         protected override IQueryable<PartData> AddSearchString(IQueryable<PartData> sql)
         {

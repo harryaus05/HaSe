@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ContosoDbContext>(options =>
+builder.Services.AddDbContext<ProjectDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -20,9 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IPartsRepo, PartsRepo>();
-builder.Services.AddTransient<IStudentsRepo, StudentsRepo>();
 builder.Services.AddTransient<IPartSpecificationsRepo, PartSpecificationsRepo>();
-builder.Services.AddTransient<IInstructorsRepo, InstructorsRepo>();
 
 var app = builder.Build();
 
@@ -63,11 +61,9 @@ static void EnsureDatabaseCreated(WebApplication app) {
 }
 
 static async Task TryInitializeDatabase(WebApplication app) {
-    var db = GetContext<ContosoDbContext>(app);
+    var db = GetContext<ProjectDbContext>(app);
     await new PartDbInitializer(db, db.Parts).Initialize(10);
     await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
-    await new InstructorDbInitializer(db, db.Instructor).Initialize(50);
-    await new StudentDbInitializer(db, db.Student).Initialize(5000);
 }
 
 static TDbContext GetContext<TDbContext>(WebApplication app) where TDbContext : DbContext => app
