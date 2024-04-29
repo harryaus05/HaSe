@@ -16,8 +16,7 @@ namespace HaSe.Infra.Common {
                 await _set.AddAsync(obj.Data);
                 await _db.SaveChangesAsync();
                 return true;
-            }
-            catch {
+            } catch {
                 _db.ChangeTracker.Clear();
                 return false;
             }
@@ -29,11 +28,9 @@ namespace HaSe.Infra.Common {
                 if (entity != null) {
                     _set.Remove(entity);
                 }
-
                 await _db.SaveChangesAsync();
                 return true;
-            }
-            catch {
+            } catch {
                 _db.ChangeTracker.Clear();
                 return false;
             }
@@ -72,13 +69,11 @@ namespace HaSe.Infra.Common {
                 _set.Update(obj.Data);
                 await _db.SaveChangesAsync();
                 return true;
-            }
-            catch {
+            } catch {
                 _db.ChangeTracker.Clear();
                 return false;
             }
         }
-
         protected bool IsInDbSet(int id) {
             return _set.Any(e => e.Id == id);
         }

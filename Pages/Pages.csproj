@@ -9,8 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <None Remove="Common\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <FrameworkReference Include="Microsoft.AspNetCore.App" />
-	  <Folder Include="Common\" />
   </ItemGroup>
 
   <ItemGroup>
