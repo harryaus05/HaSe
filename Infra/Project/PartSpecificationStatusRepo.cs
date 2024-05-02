@@ -12,12 +12,9 @@ namespace HaSe.Infra.Project {
                 : sql.Where(s => s.FromDate != null
                                  && (s.FromDate.ToString().Contains(SearchString))
                                      || s.ThruDate.ToString().Contains(SearchString));
-
         }
-
-
         protected override PartSpecificationStatus ToEntity(PartSpecificationStatusData? data) {
-            throw new NotImplementedException();
+            return new PartSpecificationStatus(data);
         }
     }
 }

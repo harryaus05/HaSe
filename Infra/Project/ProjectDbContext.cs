@@ -24,6 +24,7 @@ namespace HaSe.Infra.Project
             //var type = ToTable<PartSpecificationData>(builder, nameof(PartSpecification), _contosoSchema);
             //SetType(type, x => x.Budget, _decimal);
             ToTable<PartData>(builder, nameof(Parts), _projectSchema);
+            ToTable<PartSpecificationStatusData>(builder, nameof(PartSpecificationStatus), _projectSchema);
         }
     }
 }

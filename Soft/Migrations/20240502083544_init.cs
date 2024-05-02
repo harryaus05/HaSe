@@ -87,6 +87,21 @@ namespace HaSe.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PartSpecificationStatus",
+                schema: "Project",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FromDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ThruDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PartSpecificationStatus", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -256,6 +271,10 @@ namespace HaSe.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "PartSpecification",
+                schema: "Project");
+
+            migrationBuilder.DropTable(
+                name: "PartSpecificationStatus",
                 schema: "Project");
 
             migrationBuilder.DropTable(
