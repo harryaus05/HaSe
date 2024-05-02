@@ -10,6 +10,7 @@ namespace HaSe.Infra.Project
 
         public DbSet<PartSpecificationData> PartSpecification { get; set; } = default!;
         public DbSet<PartData> Parts { get; set; } = default!;
+        public DbSet<PartSpecificationStatusData> PartSpecificationStatus { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
