@@ -2,7 +2,6 @@
 using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Common;
-using Microsoft.EntityFrameworkCore;
 
 namespace HaSe.Infra.Project {
     public class PartSpecificationStatusRepo(ProjectDbContext context) : Repo<PartSpecificationStatus, PartSpecificationStatusData>(context, context.PartSpecificationStatus), IPartSpecificationStatusRepo {

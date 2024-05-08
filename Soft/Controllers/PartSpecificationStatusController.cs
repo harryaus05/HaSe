@@ -3,7 +3,6 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
-using HaSe.Infra.Project;
 
 namespace HaSe.Soft.Controllers {
     public class PartSpecificationStatusController(IPartSpecificationStatusRepo repo, IPartSpecificationsRepo? partsRepo = null) : BaseController<PartSpecificationStatus, PartSpecificationStatusViewModel>(repo) {
