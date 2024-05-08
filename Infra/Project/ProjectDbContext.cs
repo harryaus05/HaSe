@@ -11,6 +11,7 @@ namespace HaSe.Infra.Project
         public DbSet<PartSpecificationData> PartSpecification { get; set; } = default!;
         public DbSet<PartData> Parts { get; set; } = default!;
         public DbSet<PartSpecificationStatusData> PartSpecificationStatus { get; set; } = default!;
+        public DbSet<PartSpecificationRoleData> PartSpecificationRole { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,6 +26,7 @@ namespace HaSe.Infra.Project
             //SetType(type, x => x.Budget, _decimal);
             ToTable<PartData>(builder, nameof(Parts), _projectSchema);
             ToTable<PartSpecificationStatusData>(builder, nameof(PartSpecificationStatus), _projectSchema);
+            ToTable<PartSpecificationRoleData>(builder, nameof(PartSpecificationRole), _projectSchema);
         }
     }
 }

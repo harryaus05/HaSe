@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HaSe.Data.Project {
-    public sealed class PartSpecificationStatusData : EntityData {
-        public DateTime FromDate { get; set; }
-        public DateTime ThruDate { get; set; }
+    public sealed class PartSpecificationRoleData : EntityData {
+        public string PartyName { get; set; }
         public string Type { get; set; }
     }
 }
