@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Class Name="HaSe.Infra.Common.BaseRepo">
-    <Position X="12.25" Y="6.5" Width="1.5" />
+    <Position X="10.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\BaseRepo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HaSe.Infra.Common.CrudRepo&lt;TEntity, TData&gt;">
-    <Position X="10.25" Y="6.5" Width="1.75" />
+    <Position X="8.25" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAAiAAAAAARQAAAAAAAAAEACBAAAAgAQAAEIAAAAIA=</HashCode>
       <FileName>Common\CrudRepo.cs</FileName>
@@ -16,7 +16,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HaSe.Infra.Common.FilteredRepo&lt;TEntity, TData&gt;">
-    <Position X="7.75" Y="6.5" Width="1.75" />
+    <Position X="5.75" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAEAAAAAACAAAAA=</HashCode>
       <FileName>Common\FilteredRepo.cs</FileName>
@@ -24,7 +24,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HaSe.Infra.Common.OrderedRepo&lt;TEntity, TData&gt;">
-    <Position X="5.5" Y="6.5" Width="1.75" />
+    <Position X="3.5" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAAABAAAABAAQAAAAAAAAAAAAAAAgIAQBAAAAAAAAAA=</HashCode>
       <FileName>Common\OrderedRepo.cs</FileName>
@@ -32,7 +32,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HaSe.Infra.Common.PagedRepo&lt;TEntity, TData&gt;">
-    <Position X="3.5" Y="6.5" Width="1.75" />
+    <Position X="1" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AACAAgAAAAAQQAAAAAAAAAAUAAQAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Common\PagedRepo.cs</FileName>

@@ -87,6 +87,21 @@ namespace HaSe.Soft.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PartSpecificationRole",
+                schema: "Project",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PartyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PartSpecificationRole", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PartSpecificationStatus",
                 schema: "Project",
                 columns: table => new
@@ -94,7 +109,8 @@ namespace HaSe.Soft.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FromDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ThruDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ThruDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -271,6 +287,10 @@ namespace HaSe.Soft.Migrations
 
             migrationBuilder.DropTable(
                 name: "PartSpecification",
+                schema: "Project");
+
+            migrationBuilder.DropTable(
+                name: "PartSpecificationRole",
                 schema: "Project");
 
             migrationBuilder.DropTable(

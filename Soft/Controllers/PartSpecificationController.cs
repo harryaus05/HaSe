@@ -5,7 +5,7 @@ using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Soft.Controllers {
-    public class PartSpecificationController(IPartSpecificationsRepo repo, IPartsRepo? partsRepo = null) : BaseController<PartSpecification, PartSpecificationViewModel>(repo) {
+    public class PartSpecificationController(IPartSpecificationRepo repo, IPartsRepo? partsRepo = null) : BaseController<PartSpecification, PartSpecificationViewModel>(repo) {
         protected override string selectItemTextField => nameof(PartSpecificationViewModel.Description);
         //protected override PartSpecification ToModel(PartSpecificationViewModel viewmodel) {
         //    return new PartSpecification(PropertyCopier.CopyPropertiesFrom<PartSpecificationViewModel, PartSpecificationData>(viewmodel));

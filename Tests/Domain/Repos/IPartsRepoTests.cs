@@ -3,6 +3,6 @@ using HaSe.Domain.Project;
 using HaSe.Domain.Repos;
 
 namespace HaSe.Tests.Domain.Repos {
-    [TestClass] public class PartsRepoTests : InterfaceTests<IPartsRepo, IPagedRepo<Part>> {
+    [TestClass] public class IPartsRepoTests : InterfaceTests<IPartsRepo, IPagedRepo<Part>> {
     }
 }
