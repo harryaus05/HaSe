@@ -1,38 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Interface Name="HaSe.Domain.Repos.ICoursesRepo" Collapsed="true">
-    <Position X="3.25" Y="3.75" Width="1.5" />
+  <Interface Name="HaSe.Domain.Repos.IPartsRepo" Collapsed="true">
+    <Position X="1.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repos\ICoursesRepo.cs</FileName>
+      <FileName>Repos\IPartsRepo.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="HaSe.Domain.Common.IPagedRepo&lt;TEntity&gt;" Collapsed="true">
-    <Position X="4.25" Y="2.25" Width="1.75" />
+  <Interface Name="HaSe.Domain.Repos.IPartSpecificationStatusRepo" Collapsed="true">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repos\IPartSpecificationStatusRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HaSe.Domain.Repos.IPartSpecificationsRepo" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repos\IPartSpecificationsRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HaSe.Domain.Repos.IPartSpecificationRoleRepo" Collapsed="true">
+    <Position X="7" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repos\IPartSpecificationRoleRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HaSe.Domain.Common.IPagedRepo&lt;TEntity&gt;">
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAgAAAAAQAAAAAAAAAAAUAAQAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Common\IPagedRepo.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="HaSe.Domain.Repos.IDepartmentsRepo" Collapsed="true">
-    <Position X="1" Y="3.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repos\IDepartmentsRepo.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="HaSe.Domain.Repos.IInstructorsRepo" Collapsed="true">
-    <Position X="5.5" Y="3.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repos\IInstructorsRepo.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="HaSe.Domain.Repos.IStudentsRepo" Collapsed="true">
-    <Position X="7.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Repos\IStudentsRepo.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
