@@ -17,6 +17,12 @@ namespace HaSe.Soft.Controllers {
             var departments = (await repo.GetAsync()).Select(ToViewModel);
             return new SelectList(departments, nameof(PartSpecificationViewModel.Id), selectItemTextField);
         }
+        protected async virtual Task loadRelatedItems(TModel? m) => await Task.CompletedTask;
+        protected bool loadlazy;
+        protected virtual async Task<TViewModel> toViewAsync(TModel m) {
+            await Task.CompletedTask;
+            return Copy.Members<TModel, TViewModel>(m);
+        }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, int? pageNumber) {
             repo.PageNumber = pageNumber;
@@ -24,7 +30,7 @@ namespace HaSe.Soft.Controllers {
             repo.SortOrder = sortOrder;
             ViewBag.HasNextPage = repo.HasNextPage;
             ViewBag.HasPreviousPage = repo.HasPreviousPage;
-            ViewBag.PageNumber = repo.Page;
+            ViewBag.PageNumber = repo.PageNumberAsInt;
             ViewBag.SearchString = repo.SearchString;
             ViewBag.SortOrder = repo.SortOrder;
             ViewBag.TotalPages = repo.TotalPages;
@@ -53,11 +59,10 @@ namespace HaSe.Soft.Controllers {
         }
 
         public async Task<IActionResult> Edit(int? id) {
-            if (id == null)
-                return NotFound();
-            var model = await repo.FindAsync(id);
-            await PopulateRelatedItems(model);
-            return model == null ? NotFound() : View(ToViewModel(model));
+            var m = await repo.GetAsync(id);
+            loadlazy = true;
+            await loadRelatedItems(m);
+            return m == null ? NotFound() : View(await toViewAsync(m));
         }
 
         [HttpPost, ValidateAntiForgeryToken] public async Task<IActionResult> Edit(TViewModel view) {

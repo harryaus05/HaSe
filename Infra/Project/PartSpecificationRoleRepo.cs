@@ -5,8 +5,9 @@ using HaSe.Infra.Common;
 
 namespace HaSe.Infra.Project
 {
-    public class PartSpecificationRoleRepo(ProjectDbContext context) : Repo<PartSpecificationRole, PartSpecificationRoleData>(context, context.PartSpecificationRole), IPartSpecificationRoleRepo {
-        protected override IQueryable<PartSpecificationRoleData> AddSearchString(IQueryable<PartSpecificationRoleData> sql)
+    public class PartSpecificationRoleRepo(ProjectDbContext c) :
+        Repo<PartSpecificationRole, PartSpecificationRoleData>(c, c.PartSpecificationRole), IPartSpecificationRoleRepo {
+        protected override IQueryable<PartSpecificationRoleData> addFilter(IQueryable<PartSpecificationRoleData> sql)
         {
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.PartyName != null
@@ -14,8 +15,13 @@ namespace HaSe.Infra.Project
                     || s.Type.Contains(SearchString)));
         }
 
-        protected override PartSpecificationRole ToEntity(PartSpecificationRoleData? data) {
-            return new PartSpecificationRole(data);
+        protected override PartSpecificationRole ToEntity(PartSpecificationRoleData? d) {
+            return new PartSpecificationRole(d);
         }
+        protected override IQueryable<PartSpecificationRoleData> addFixedFilter(IQueryable<PartSpecificationRoleData> sql) =>
+            (FixedFilter == nameof(PartSpecificationRoleData.Type)) ? sql.Where(s => s.Type.ToString() == SearchString)
+                : sql;
+
+
     }
 }

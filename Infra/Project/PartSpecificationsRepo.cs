@@ -5,9 +5,10 @@ using HaSe.Infra.Common;
 
 namespace HaSe.Infra.Project
 {
-    public class PartSpecificationsRepo(ProjectDbContext context) : Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationsRepo
+    public class PartSpecificationsRepo(ProjectDbContext context) :
+        Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationsRepo
     {
-        protected override IQueryable<PartSpecificationData> AddSearchString(IQueryable<PartSpecificationData> sql)
+        protected override IQueryable<PartSpecificationData> addFilter(IQueryable<PartSpecificationData> sql)
         {
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.Description != null

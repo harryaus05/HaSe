@@ -19,7 +19,7 @@ namespace HaSe.Infra.Project
             InitializeTables(builder);
         }
 
-        public static void InitializeTables(ModelBuilder builder)
+        internal static void InitializeTables(ModelBuilder builder)
         {
             ToTable<PartSpecificationData>(builder, nameof(PartSpecification), _projectSchema);
             //var type = ToTable<PartSpecificationData>(builder, nameof(PartSpecification), _contosoSchema);
@@ -27,6 +27,7 @@ namespace HaSe.Infra.Project
             ToTable<PartData>(builder, nameof(Parts), _projectSchema);
             ToTable<PartSpecificationStatusData>(builder, nameof(PartSpecificationStatus), _projectSchema);
             ToTable<PartSpecificationRoleData>(builder, nameof(PartSpecificationRole), _projectSchema);
+
         }
     }
 }

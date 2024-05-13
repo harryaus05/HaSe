@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Pages.Controls {
     public static class HtmlShowItem {
-        public static IHtmlContent ShowItem<TModel, TValue>(this IHtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression)
-        {
+        public static IHtmlContent ShowItem<TModel, TValue>(this IHtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, string? value = null) {
             var displayName = helper.DisplayNameFor(expression);
             var displayValue = helper.DisplayFor(expression);
 

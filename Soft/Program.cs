@@ -1,3 +1,4 @@
+using HaSe.Domain;
 using HaSe.Domain.Repos;
 using HaSe.Infra.Project;
 using HaSe.Infra.Project.DbInitializers;
@@ -23,7 +24,7 @@ builder.Services.AddTransient<IPartsRepo, PartsRepo>();
 builder.Services.AddTransient<IPartSpecificationsRepo, PartSpecificationsRepo>();
 builder.Services.AddTransient<IPartSpecificationStatusRepo, PartSpecificationStatusRepo>();
 builder.Services.AddTransient<IPartSpecificationRoleRepo, PartSpecificationRoleRepo>();
-
+GetFromRepo.SetServices(builder.Services);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

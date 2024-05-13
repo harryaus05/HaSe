@@ -4,78 +4,53 @@ using HaSe.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace HaSe.Infra.Common {
-    public abstract class CrudRepo<TEntity, TData>(DbContext context, DbSet<TData> set) : BaseRepo, ICrudRepo<TEntity> where TEntity : Entity<TData> where TData : EntityData, new() {
-        internal readonly DbContext _db = context;
-        internal readonly DbSet<TData> _set = set;
-        internal TEntity? _item;
-        internal readonly List<TEntity> _list = [];
-        protected internal virtual IQueryable<TData> CreateSql() => from s in _set select s;
+    public abstract class CrudRepo<TEntity, TData>(DbContext c, DbSet<TData> s) :
+        BaseRepo, ICrudRepo<TEntity> where TEntity : Entity<TData> where TData : EntityData, new() {
 
+        internal readonly DbContext db = c;
+        internal readonly DbSet<TData> set = s;
+        protected abstract TEntity ToEntity(TData? d);
+
+        protected internal virtual IQueryable<TData> createSQL() =>
+            from s in set select s;
         public async Task<bool> AddAsync(TEntity obj) {
             try {
-                await _set.AddAsync(obj.Data);
-                await _db.SaveChangesAsync();
+                await set.AddAsync(obj.Data);
+                await db.SaveChangesAsync();
                 return true;
             } catch {
-                _db.ChangeTracker.Clear();
+                db.ChangeTracker.Clear();
                 return false;
             }
         }
-
         public async Task<bool> DeleteAsync(int id) {
             try {
-                var entity = await FindAsyncData(id);
-                if (entity != null) {
-                    _set.Remove(entity);
-                }
-                await _db.SaveChangesAsync();
+                var m = await getAsync(id);
+                if (m != null) set.Remove(m);
+                await db.SaveChangesAsync();
                 return true;
             } catch {
-                _db.ChangeTracker.Clear();
+                db.ChangeTracker.Clear();
                 return false;
             }
         }
-
-        public async Task<TEntity?> FindAsync(int? id) {
-            return ToEntity(await FindAsyncData(id));
-        }
-
-        public async Task<TData?> FindAsyncData(int? id) {
-            return await _set.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<TEntity>> GetAsync() {
-            return (await GetAsyncData()).Select(ToEntity);
-        }
-
-        public async Task<IEnumerable<TData>> GetAsyncData() {
-            return await CreateSql().AsNoTracking().ToListAsync();
-        }
-
-        protected abstract TEntity ToEntity(TData? data);
-
-        public async Task<TEntity?> GetAsync(int? id) {
-            return ToEntity(await GetAsyncData(id));
-        }
-
-        public async Task<TData?> GetAsyncData(int? id) {
-            return await _set.FirstOrDefaultAsync(m => m.Id == id);
-        }
-
+        public async Task<IEnumerable<TData>> getAsync() => await createSQL().AsNoTracking().ToListAsync();
+        public async Task<IEnumerable<TEntity>> GetAsync() => (await getAsync()).Select(ToEntity);
+        public async Task<TData?> getAsync(int? id) => await set.FirstOrDefaultAsync(m => m.Id == id);
+        public async Task<TEntity?> GetAsync(int? id) => ToEntity(await getAsync(id));
         public async Task<bool> UpdateAsync(TEntity obj) {
-            if (!IsInDbSet(obj.Id))
-                return false;
+            if (obj is null) return false;
+            if (!isInDbSet(obj.Id)) return false;
             try {
-                _set.Update(obj.Data);
-                await _db.SaveChangesAsync();
+                set.Update(obj.Data);
+                await db.SaveChangesAsync();
                 return true;
             } catch {
-                _db.ChangeTracker.Clear();
+                db.ChangeTracker.Clear();
                 return false;
             }
         }
-        protected bool IsInDbSet(int id) {
-            return _set.Any(e => e.Id == id);
-        }
+        protected bool isInDbSet(int id) => set.Any(e => e.Id == id);
     }
+
 }

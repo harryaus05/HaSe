@@ -7,17 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Pages.Controls {
     public static class HtmlShowTable {
-        public static IHtmlContent ShowTable<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, IEnumerable<TModel> items, string sortOrder, string searchString, int pageNumber) where TModel : IEntity {
+        public static IHtmlContent ShowTable<TModel, TEntity>(this IHtmlHelper<TModel> h,
+               IEnumerable<TEntity> items, string sortOrder, string searchString, int pageNumber, bool isEditable = true) where TEntity : IEntity {
             var table = new TagBuilder("table");
             table.AddCssClass("table");
 
-            var properties = GetProperties(typeof(TModel));
+            var properties = getProperties(typeof(TEntity));
 
-            var thead = helper.CreateHead(properties, sortOrder, searchString, pageNumber);
+            var thead = h.createHead(properties, sortOrder, searchString, pageNumber, isEditable);
             table.InnerHtml.AppendHtml(thead);
 
-            var tbody = helper.CreateBody(properties, items);
-            table.InnerHtml.AppendHtml(tbody);
+            var body = h.createBody(properties, items, isEditable);
+            table.InnerHtml.AppendHtml(body);
 
             var writer = new StringWriter();
             table.WriteTo(writer, HtmlEncoder.Default);
@@ -25,92 +26,81 @@ namespace HaSe.Pages.Controls {
             return new HtmlString(writer.ToString());
         }
 
-        private static TagBuilder CreateHead<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, PropertyInfo[] properties, string sortOrder, string searchString, int pageNumber) {
+        private static TagBuilder createHead<TModel>(this IHtmlHelper<TModel> h,
+            PropertyInfo[] properties, string sortOrder, string searchString, int pageNumber, bool isEditable) {
             var thead = new TagBuilder("thead");
             var tr = new TagBuilder("tr");
-            foreach (var property in properties) {
-                helper.AddColumnWithDisplayName(tr, property, sortOrder, searchString, pageNumber);
-            }
-
-            helper.AddColumn(tr, string.Empty);
+            foreach (var p in properties) h.addColumn(tr, p, sortOrder, searchString, pageNumber, isEditable);
+            if (isEditable) h.addColumn(tr, string.Empty);
             thead.InnerHtml.AppendHtml(tr);
             return thead;
         }
-
-        private static TagBuilder CreateBody<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, PropertyInfo[] properties, IEnumerable<TModel> items) where TModel : IEntity {
+        private static TagBuilder createBody<TModel, TEntity>(this IHtmlHelper<TModel> h,
+            PropertyInfo[] properties, IEnumerable<TEntity> items, bool isEditable) where TEntity : IEntity {
             var tbody = new TagBuilder("tbody");
-            foreach (var item in items) {
+            foreach (var i in items) {
                 var tr = new TagBuilder("tr");
                 TagBuilder td;
-                foreach (var property in properties) {
+                foreach (var p in properties) {
                     td = new TagBuilder("td");
-                    var v = (property?.GetValue(item) is DateTime dateTime) ? dateTime.ToString("dd/MM/yyyy") : property?.GetValue(item)?.ToString() ?? String.Empty;
-                    var value = helper.Raw(v);
+                    var v = p?.GetValue(i)?.ToString() ?? string.Empty;
+                    var value = h.Raw(v);
                     td.InnerHtml.AppendHtml(value);
                     tr.InnerHtml.AppendHtml(td);
                 }
-
-                var id = item?.Id.ToString() ?? string.Empty;
-                td = new TagBuilder("td");
-                helper.AddLink("Edit", id, td);
-                helper.AddLink("Details", id, td);
-                helper.AddLink("Delete", id, td, true);
-                tr.InnerHtml.AppendHtml(td);
+                var id = i?.Id.ToString() ?? string.Empty;
+                if (isEditable) {
+                    td = new TagBuilder("td");
+                    h.addLink("Edit", id, td);
+                    h.addLink("Details", id, td);
+                    h.addLink("Delete", id, td, true);
+                    tr.InnerHtml.AppendHtml(td);
+                }
                 tbody.InnerHtml.AppendHtml(tr);
             }
-
             return tbody;
         }
-
-        private static void AddLink<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, string action, string id, TagBuilder td, bool isLast = false) {
-            var link = helper.ActionLink(action, action, new { Id = id });
+        private static void addLink<TModel>(this IHtmlHelper<TModel> h,
+            string action, string id, TagBuilder td, bool isLast = false) {
+            var link = h.ActionLink(action, action, new { Id = id });
             td.InnerHtml.AppendHtml(link);
-            if (isLast)
-                return;
+            if (isLast) return;
             td.InnerHtml.AppendHtml(new HtmlString(" | "));
         }
-
-        private static string NewName(string displayName, string propertyName, string sortOrder) {
-            if (string.IsNullOrEmpty(sortOrder))
-                return displayName;
-            if (!sortOrder.StartsWith(propertyName))
-                return displayName;
-            if (sortOrder.EndsWith("_desc"))
-                return $"{displayName} ↑";
-            return $"{displayName} ↓";
+        private static void addColumn<TModel>(this IHtmlHelper<TModel> h,
+            TagBuilder tr, PropertyInfo p, string sortOrder, string searchString, int pageNumber, bool isEditable, string tag = "td") {
+            var n = newName(p, sortOrder);
+            sortOrder = newSortOrder(p.Name, sortOrder);
+            var th = new TagBuilder(tag);
+            var v = isEditable
+                ? h.ActionLink(n, "Index", new { SortOrder = sortOrder, SearchString = searchString, PageNumer = pageNumber })
+                : h.Raw(n);
+            th.InnerHtml.AppendHtml(v);
+            tr.InnerHtml.AppendHtml(th);
         }
-
-        private static string NewSortOrder(string name, string sortOrder) {
-            if (name is null)
-                return string.Empty;
-            if (sortOrder is null)
-                return name;
-            if (!sortOrder.StartsWith(name))
-                return name;
-            if (sortOrder.EndsWith("_desc"))
-                return name;
+        private static string newName(PropertyInfo p, string sortOrder) {
+            var name = p.Name;
+            var displayName = p.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? name;
+            if (string.IsNullOrEmpty(sortOrder)) return displayName;
+            if (!sortOrder.StartsWith(name)) return displayName;
+            if (sortOrder.EndsWith("_desc")) return $"{displayName} ↓";
+            return $"{displayName} ↑";
+        }
+        private static void addColumn<TModel>(this IHtmlHelper<TModel> h,
+            TagBuilder tr, string name, string tag = "td") {
+            var th = new TagBuilder(tag);
+            var v = h.Raw(name);
+            th.InnerHtml.AppendHtml(v);
+            tr.InnerHtml.AppendHtml(th);
+        }
+        private static string newSortOrder(string name, string sortOrder) {
+            if (name is null) return string.Empty;
+            if (sortOrder is null) return name;
+            if (!sortOrder.StartsWith(name)) return name;
+            if (sortOrder.EndsWith("_desc")) return name;
             return name + "_desc";
         }
-
-        private static void AddColumn<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, TagBuilder tr, string value, string tag = "td") {
-            var th = new TagBuilder(tag);
-            var v = helper.Raw(value);
-            th.InnerHtml.AppendHtml(v);
-            tr.InnerHtml.AppendHtml(th);
-        }
-
-        private static PropertyInfo[] GetProperties(Type type) {
-            return type?.GetProperties()?.Where(x => x.Name != "Id")?.ToArray() ?? [];
-        }
-
-        private static void AddColumnWithDisplayName<TModel>(this IHtmlHelper<IEnumerable<TModel>> helper, TagBuilder tr, PropertyInfo property, string sortOrder, string searchString, int pageNumber, string tag = "td") {
-            var displayName = property.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? property.Name;
-            var propertyName = property.Name;
-            sortOrder = NewSortOrder(propertyName, sortOrder);
-            var th = new TagBuilder(tag);
-            var v = helper.ActionLink(NewName(displayName, propertyName, sortOrder), "Index", new { SortOrder = sortOrder, SearchString = searchString, PageNumber = pageNumber });
-            th.InnerHtml.AppendHtml(v);
-            tr.InnerHtml.AppendHtml(th);
-        }
+        private static PropertyInfo[] getProperties(Type t)
+            => t?.GetProperties()?.Where(x => x.Name != "Id")?.ToArray() ?? [];
     }
 }
