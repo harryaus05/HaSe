@@ -1,5 +1,6 @@
 ﻿using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace HaSe.Tests.Helpers.Methods {
     [TestClass] public class GetRandomTests : BaseTests {
@@ -28,6 +29,8 @@ namespace HaSe.Tests.Helpers.Methods {
         [TestMethod] public void UInt32Test() => TestRandom(() => GetRandom.UInt32(), GetRandom.UInt32);
         [TestMethod] public void UInt16Test() => TestRandom(() => GetRandom.UInt16(), GetRandom.UInt16);
         [TestMethod] public void UInt8Test() => TestRandom(() => GetRandom.UInt8(), GetRandom.UInt8);
+
+
 
         private static void TestRandom<T>(Func<T> f1, Func<T, T, T>? f2 = null) where T : IComparable<T> {
             TestRandom(f1, out T min, out T max);
