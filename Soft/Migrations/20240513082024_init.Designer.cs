@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HaSe.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240502083544_init")]
+    [Migration("20240513082024_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -76,6 +76,27 @@ namespace HaSe.Soft.Migrations
                     b.ToTable("PartSpecification", "Project");
                 });
 
+            modelBuilder.Entity("HaSe.Data.Project.PartSpecificationRoleData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PartyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PartSpecificationRole", "Project");
+                });
+
             modelBuilder.Entity("HaSe.Data.Project.PartSpecificationStatusData", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +110,10 @@ namespace HaSe.Soft.Migrations
 
                     b.Property<DateTime>("ThruDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

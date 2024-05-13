@@ -73,6 +73,27 @@ namespace HaSe.Soft.Migrations
                     b.ToTable("PartSpecification", "Project");
                 });
 
+            modelBuilder.Entity("HaSe.Data.Project.PartSpecificationRoleData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PartyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PartSpecificationRole", "Project");
+                });
+
             modelBuilder.Entity("HaSe.Data.Project.PartSpecificationStatusData", b =>
                 {
                     b.Property<int>("Id")

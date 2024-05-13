@@ -5,7 +5,8 @@ using HaSe.Infra.Common;
 
 namespace HaSe.Infra.Project
 {
-    public class PartSpecificationRoleRepo(ProjectDbContext context) : Repo<PartSpecificationRole, PartSpecificationRoleData>(context, context.PartSpecificationRole), IPartSpecificationRoleRepo {
+    public class PartSpecificationRoleRepo(ProjectDbContext context) :
+        Repo<PartSpecificationRole, PartSpecificationRoleData>(context, context.PartSpecificationRole), IPartSpecificationRoleRepo {
         protected override IQueryable<PartSpecificationRoleData> AddSearchString(IQueryable<PartSpecificationRoleData> sql)
         {
             return string.IsNullOrEmpty(SearchString) ? sql
