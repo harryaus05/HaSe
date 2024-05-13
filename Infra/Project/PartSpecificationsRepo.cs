@@ -6,7 +6,7 @@ using HaSe.Infra.Common;
 namespace HaSe.Infra.Project
 {
     public class PartSpecificationsRepo(ProjectDbContext context) :
-        Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationsRepo
+        Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationRepo
     {
         protected override IQueryable<PartSpecificationData> addFilter(IQueryable<PartSpecificationData> sql)
         {
