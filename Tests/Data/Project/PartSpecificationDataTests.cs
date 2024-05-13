@@ -2,7 +2,7 @@
 using HaSe.Data.Project;
 using HaSe.Tests.Helpers;
 
-namespace HaSe.Tests.Data.Contoso;
+namespace HaSe.Tests.Data.Project;
 
 [TestClass]
 public class PartSpecificationDataTests : SealedNewTests<PartSpecificationData, EntityData> {
