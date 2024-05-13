@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HaSe.Domain.Entity&lt;TData&gt;">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Domain.Project.Part">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Project\Part.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Domain.Project.PartSpecification">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAEAAAgAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Project\PartSpecification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Domain.Project.PartSpecificationRole">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAA=</HashCode>
+      <FileName>Project\PartSpecificationRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HaSe.Domain.Project.PartSpecificationStatus">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAA=</HashCode>
+      <FileName>Project\PartSpecificationStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
