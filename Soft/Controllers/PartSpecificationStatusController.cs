@@ -5,7 +5,7 @@ using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 
 namespace HaSe.Soft.Controllers {
-    public class PartSpecificationStatusController(IPartSpecificationStatusRepo repo, IPartSpecificationsRepo? partsRepo = null) : BaseController<PartSpecificationStatus, PartSpecificationStatusViewModel>(repo) {
+    public class PartSpecificationStatusController(IPartSpecificationStatusRepo repo, IPartSpecificationRepo? partsRepo = null) : BaseController<PartSpecificationStatus, PartSpecificationStatusViewModel>(repo) {
 
         protected override string selectItemTextField => nameof(PartSpecificationStatusViewModel.FromDate);
         protected override PartSpecificationStatus ToModel(PartSpecificationStatusViewModel viewmodel) {

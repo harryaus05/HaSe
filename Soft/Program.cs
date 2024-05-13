@@ -20,7 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IPartsRepo, PartsRepo>();
-builder.Services.AddTransient<IPartSpecificationsRepo, PartSpecificationsRepo>();
+builder.Services.AddTransient<IPartSpecificationRepo, PartSpecificationsRepo>();
 builder.Services.AddTransient<IPartSpecificationStatusRepo, PartSpecificationStatusRepo>();
 builder.Services.AddTransient<IPartSpecificationRoleRepo, PartSpecificationRoleRepo>();
 
