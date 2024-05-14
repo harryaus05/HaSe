@@ -2,7 +2,7 @@
 using System.ComponentModel;
 
 namespace HaSe.Facade.Project {
-    public sealed class PartSpecificationStatusViewModel : EntityViewModel {
+    public sealed class PartSpecificationStatusViewModel : PartSpecificationRelationViewModel {
         [DataType(DataType.Date)]
         [Required, DisplayName("From Date"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FromDate { get; set; }
@@ -14,5 +14,8 @@ namespace HaSe.Facade.Project {
         [DisplayName("Type")]
         [Required]
         public string Type { get; set; }
+    }
+    public abstract class PartSpecificationRelationViewModel : EntityViewModel {
+        [DisplayName("Part Specification")][Required] public int PartSpecificationId { get; set; }
     }
 }
