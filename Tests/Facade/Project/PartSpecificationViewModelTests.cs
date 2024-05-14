@@ -5,7 +5,7 @@ using HaSe.Tests.Helpers;
 namespace HaSe.Tests.Facade.Project
 {
     [TestClass]
-    public class PartSpecificationViewModelTests : SealedNewTests<PartSpecificationViewModel, EntityViewModel>
+    public class PartSpecificationViewModelTests : SealedNewTests<PartSpecificationViewModel, PartRelationViewModel>
     {
         [TestMethod] public void DescriptionTest() => PropertyTest("Description", true);
         [TestMethod] public void TypeTest() => PropertyTest("Type");

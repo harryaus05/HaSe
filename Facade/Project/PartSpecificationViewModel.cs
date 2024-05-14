@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace HaSe.Facade.Project {
-    public sealed class PartSpecificationViewModel : EntityViewModel {
+    public sealed class PartSpecificationViewModel : PartRelationViewModel {
         [DisplayName("Description")]
         [Required, MinLength(2, ErrorMessage = "Description must have at least 2 characters."),
          RegularExpression(@"^[A-Za-z0-9ÜÕÖÄüõöä\s]+$", ErrorMessage = "Description can only contain latin/estonian letters, numbers and whitespaces.")]
@@ -18,9 +18,9 @@ namespace HaSe.Facade.Project {
         [DisplayName("Comment")]
         public string? Comment { get; set; }
 
-        [DisplayName("Part Id")]
-        public int? PartId { get; set; }
-
         [DisplayName("Part Spec Stat")] public List<PartSpecificationStatusViewModel>? SpecificationStatus { get; set; }
+    }
+    public abstract class PartRelationViewModel : EntityViewModel {
+        [DisplayName("Part Id")][Required] public int PartId { get; set; }
     }
 }
