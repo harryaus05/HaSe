@@ -26,7 +26,6 @@ namespace HaSe.Infra.Common {
             var o = await getAsync(id);
             if (o != null && !list.Contains(o)) list.Add(o);
             return new SelectList(list, nameof(EntityData.Id), selectTextField, id);
-
         }
     }
 }

@@ -12,7 +12,7 @@
 
     $this.select2({
 
-        placeholder: `Select a value`,
+        placeholder: `Select a value: controller=${controller}; id =${selectedId}`,
         theme: "bootstrap4",
         allowClear: true,
 

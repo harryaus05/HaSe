@@ -19,8 +19,9 @@ namespace HaSe.Infra.Project
                                      || s.PartId.ToString().Contains(SearchString));
         }
 
-        protected override PartSpecification ToEntity(PartSpecificationData? data) {
-            return new PartSpecification(data);
-        }
+        protected override PartSpecification ToEntity(PartSpecificationData? d) => new(d);
+        protected override IQueryable<PartSpecificationData> addFixedFilter(IQueryable<PartSpecificationData> sql) =>
+         (FixedFilter == nameof(PartSpecificationData.PartId)) ? sql.Where(s => s.PartId.ToString() == SearchString)
+        : sql;
     }
 }
