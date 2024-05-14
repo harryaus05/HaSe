@@ -15,7 +15,8 @@ namespace HaSe.Tests.Helpers {
             obj = CreateObject();
         }
 
-        [TestMethod] public void IsBaseClassTest() => Assert.AreEqual(typeof(TClass)?.BaseType?.Name, baseType.Name);
+        [TestMethod] public void IsBaseClassTest() => 
+            Assert.AreEqual(typeof(TClass)?.BaseType?.Name, baseType.Name);
         [TestMethod] public virtual void IsAbstractTest() => Assert.IsTrue(typeof(TClass)?.IsAbstract);
 
         protected void PropertyTest(string? displayName = null, bool? isRequired = null) {

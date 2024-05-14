@@ -105,6 +105,12 @@ namespace HaSe.Soft.Migrations
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PartSpecificationId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ThruDate")
                         .HasColumnType("datetime2");
 

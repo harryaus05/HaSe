@@ -21,6 +21,6 @@ namespace HaSe.Facade.Project {
         [DisplayName("Part Id")]
         public int? PartId { get; set; }
 
-        [DisplayName("Course students")] public List<PartSpecificationStatusViewModel>? SpecificationStatus { get; set; }
+        [DisplayName("Part Spec Stat")] public List<PartSpecificationStatusViewModel>? SpecificationStatus { get; set; }
     }
 }
