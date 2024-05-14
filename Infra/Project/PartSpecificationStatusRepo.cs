@@ -12,10 +12,13 @@ namespace HaSe.Infra.Project {
                 : sql.Where(s => s.FromDate != null
                                  && (s.FromDate.ToString().Contains(SearchString))
                                  || s.ThruDate.ToString().Contains(SearchString)
+                                 || s.PartSpecificationId.ToString().Contains(SearchString)
                                  || s.Type.Contains(SearchString));
         }
-        protected override PartSpecificationStatus ToEntity(PartSpecificationStatusData? data) {
-            return new PartSpecificationStatus(data);
-        }
+        protected override PartSpecificationStatus ToEntity(PartSpecificationStatusData? d) => new(d);
+        protected override IQueryable<PartSpecificationStatusData> addFixedFilter(IQueryable<PartSpecificationStatusData> sql) =>
+         (FixedFilter == nameof(PartSpecificationStatusData.PartSpecificationId)) ? sql.Where(s => s.PartSpecificationId.ToString() == SearchString)
+        : sql;
+
     }
 }
