@@ -2,6 +2,6 @@
 using HaSe.Domain.Project;
 
 namespace HaSe.Domain.Repos {
-    public interface IPartSpecificationRoleRepo : IPagedRepo<PartSpecificationRole> {
+    public interface IPartSpecificationRoleRepo : IRepo<PartSpecificationRole> {
     }
 }

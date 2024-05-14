@@ -2,5 +2,5 @@
 using HaSe.Domain.Project;
 
 namespace HaSe.Domain.Repos {
-    public interface IPartsRepo: IPagedRepo<Part> { }
+    public interface IPartsRepo: IRepo<Part> { }
 }

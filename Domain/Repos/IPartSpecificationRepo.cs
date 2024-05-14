@@ -3,4 +3,4 @@ using HaSe.Domain.Project;
 
 namespace HaSe.Domain.Repos;
 
-public interface IPartSpecificationRepo: IPagedRepo<PartSpecification> { }
+public interface IPartSpecificationRepo: IRepo<PartSpecification> { }
