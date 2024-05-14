@@ -11,7 +11,7 @@ namespace HaSe.Domain.Project {
         public DateTime FromDate => data.FromDate;
         public DateTime ThruDate => data.ThruDate;
         public string Type => data.Type;    
-        public int PartId => data.PartId;
+        public int PartSpecificationId => data.PartSpecificationId;
         public PartSpecification? PartSpecification { get; private set; }
     }
 }
