@@ -6,8 +6,7 @@ namespace HaSe.Domain.Project {
         public override async Task LoadLazy() {
             await base.LoadLazy();
             SpecificationStatus ??= await GetFromRepo.Items<IPartSpecificationStatusRepo, PartSpecificationStatus>(nameof(PartSpecificationStatusData.PartSpecificationId), Id);
-            //Enrollments ??= await GetFromRepo.Items<IEnrollmentsRepo, Enrollment>(nameof(EnrollmentData.CourseId), Id);
-            //Assignments ??= await GetFromRepo.Items<IAssignmentsRepo, Assignment>(nameof(AssignmentData.CourseId), Id);
+            Part ??= await GetFromRepo.Item<IPartsRepo, Part>((int)PartId);
         }
         public string Description => data.Description;
         public string Type => data.Type;
@@ -15,5 +14,6 @@ namespace HaSe.Domain.Project {
         public DateTime DateDocumented => data.DateDocumented;
         public string? Comment => data.Comment;
         public int? PartId => data.PartId;
+        public Part? Part { get; private set; }
     }
 }

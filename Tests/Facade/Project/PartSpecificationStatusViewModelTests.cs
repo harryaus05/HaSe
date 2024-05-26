@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace HaSe.Tests.Facade.Project
 {
     [TestClass]
-    public class PartSpecificationStatusViewModelTests : SealedNewTests<PartSpecificationStatusViewModel, EntityViewModel>
+    public class PartSpecificationStatusViewModelTests : SealedNewTests<PartSpecificationStatusViewModel, PartSpecificationRelationViewModel>
     {
         [TestMethod] public void FromDateTest() => PropertyTest("From Date", true);
         [TestMethod] public void ThruDateTest() => PropertyTest("Thru Date");

@@ -1,8 +1,10 @@
 ﻿@model HaSe.Facade.Project.PartSpecificationStatusViewModel
 @using HaSe.Pages.Controls
 
+@Html.SelectItem(model => model.PartSpecificationId, "partspecification")
 @Html.EditItem(model => model.FromDate)
 @Html.EditItem(model => model.ThruDate)
+
 <div class="form-group">
     <label asp-for="Type" class="control-label"></label>
     <select asp-for="Type" class="form-control">
