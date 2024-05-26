@@ -28,6 +28,16 @@ namespace HaSe.Infra.Project
             ToTable<PartSpecificationStatusData>(builder, nameof(PartSpecificationStatus), _projectSchema);
             ToTable<PartSpecificationRoleData>(builder, nameof(PartSpecificationRole), _projectSchema);
 
+            //var s = _projectSchema;
+            //toTable<StudentData>(b, nameof(Students), s);
+            //toTable<InstructorData>(b, nameof(Instructors), s);
+            //var t = toTable<DepartmentData>(b, nameof(Departments), s);
+            //setType(t, x => x.Budget, fourDecimals);
+            //toTable<CourseData>(b, nameof(Courses), s);
+            //toTable<EnrollmentData>(b, nameof(Enrollments), s);
+            //var c = toTable<AssignmentData>(b, nameof(Assignments), s);
+            //c.HasAlternateKey(nameof(AssignmentData.CourseId), nameof(AssignmentData.InstructorId));
+
         }
     }
 }

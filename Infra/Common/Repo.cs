@@ -1,8 +1,8 @@
 ﻿using HaSe.Data;
 using HaSe.Domain;
 using HaSe.Domain.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Web.Mvc;
 
 namespace HaSe.Infra.Common {
     public abstract class Repo<TEntity, TData>(DbContext c, DbSet<TData> s) :

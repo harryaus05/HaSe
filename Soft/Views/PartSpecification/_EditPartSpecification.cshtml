@@ -19,8 +19,8 @@
 
 @Html.EditItem(model => model.DateDocumented)
 @Html.EditItem(model => model.Comment)
+@Html.SelectItem(model => model.SpecificationStatus, "PartSpecificationStatus")
 
-@* @Html.EditItem(model => model.PartId) *@
 
 <div class="form-group">
     <label asp-for="PartId" class="control-label"></label>

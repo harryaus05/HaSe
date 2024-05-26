@@ -15,7 +15,6 @@ namespace HaSe.Soft.Controllers {
     //        ViewBag.Parts = await new PartSpecificationController(partSpecificationsRepo, null).SelectListAsync();
     //    }
     //}
-
     public class PartsController(IPartsRepo repo) : BaseController<Part, PartViewModel>(repo) {
         protected override string selectItemTextField => nameof(PartViewModel.Name);
         protected override Part ToModel(PartViewModel viewmodel) {
@@ -27,5 +26,11 @@ namespace HaSe.Soft.Controllers {
         //    viewModel.Name = "model.ToString()";
         //    return viewModel;
         //}
+        protected override async Task<PartViewModel> ToViewAsync(Part m) {
+            if (loadlazy) await m.LoadLazy();
+            var v = await base.ToViewAsync(m);
+            return v;
+        }
     }
+
 }

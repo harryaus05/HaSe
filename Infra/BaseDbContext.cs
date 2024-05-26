@@ -8,7 +8,7 @@ namespace HaSe.Infra {
             return builder.Entity<TEntity>().ToTable(name, schema);
         }
 
-        protected static void SetType<TEntity>(EntityTypeBuilder<TEntity> builder, Expression<Func<TEntity, object>> expression, string type) where TEntity : class {
+        protected static void setType<TEntity>(EntityTypeBuilder<TEntity> builder, Expression<Func<TEntity, object>> expression, string type) where TEntity : class {
             builder.Property(expression).HasColumnType(type);
         }
     }

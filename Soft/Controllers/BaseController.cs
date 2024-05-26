@@ -6,25 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Soft.Controllers {
-    public abstract class BaseController<TModel, TViewModel>(IPagedRepo<TModel> r) : Controller where TModel : class where TViewModel : EntityViewModel, new() {
-        protected readonly IPagedRepo<TModel> repo = r;
-        protected abstract TModel ToModel(TViewModel viewmodel);
-        protected virtual async Task PopulateRelatedItems(TModel? model) => await Task.CompletedTask;
-        protected virtual TViewModel ToViewModel(TModel model) => PropertyCopier.CopyPropertiesFrom<TModel, TViewModel>(model);
-        protected virtual string selectItemTextField => nameof(EntityViewModel.Id);
-        protected internal async Task<SelectList> SelectListAsync() {
-            repo.PageSize = repo.TotalItems;
-            var departments = (await repo.GetAsync()).Select(ToViewModel);
-            return new SelectList(departments, nameof(PartSpecificationViewModel.Id), selectItemTextField);
-        }
-        protected async virtual Task loadRelatedItems(TModel? m) => await Task.CompletedTask;
+    public abstract class BaseController<TModel, ToViewModel>(IRepo<TModel> r) : Controller
+    where TModel : class where ToViewModel : EntityViewModel, new() {
+        protected readonly IRepo<TModel> repo = r;
         protected bool loadlazy;
-        protected virtual async Task<TViewModel> toViewAsync(TModel m) {
+        protected async virtual Task loadRelatedItems(TModel? m) => await Task.CompletedTask;
+        protected abstract TModel ToModel(ToViewModel v);
+        protected virtual async Task<ToViewModel> ToViewAsync(TModel m) {
             await Task.CompletedTask;
-            return Copy.Members<TModel, TViewModel>(m);
+            return Copy.Members<TModel, ToViewModel>(m);
         }
-
+        protected virtual string selectItemTextField => nameof(EntityViewModel.Id);
         public async Task<IActionResult> Index(string sortOrder, string searchString, int? pageNumber) {
+            loadlazy = false;
             repo.PageNumber = pageNumber;
             repo.SearchString = searchString;
             repo.SortOrder = sortOrder;
@@ -35,57 +29,59 @@ namespace HaSe.Soft.Controllers {
             ViewBag.SortOrder = repo.SortOrder;
             ViewBag.TotalPages = repo.TotalPages;
             var list = await repo.GetAsync();
-            var viewList = list.Select(ToViewModel);
+            var tasks = list.Select(ToViewAsync);
+            var viewList = await Task.WhenAll(tasks);
             return View(viewList);
         }
-
         public async Task<IActionResult> Details(int? id) {
-            if (id == null)
-                return NotFound();
-            var model = await repo.GetAsync(id);
-            return model == null ? NotFound() : View(ToViewModel(model));
+            var m = await repo.GetAsync(id);
+            loadlazy = true;
+            return m == null ? NotFound() : View(await ToViewAsync(m));
         }
-
-        public IActionResult Create() {
+        public async Task<IActionResult> Create() {
+            await loadRelatedItems(null);
             return View();
         }
-
-        [HttpPost, ValidateAntiForgeryToken] public async Task<IActionResult> Create(TViewModel view) {
-            if (!ModelState.IsValid)
-                return View(view);
-            if (await repo.AddAsync(ToModel(view)))
-                return RedirectToAction(nameof(Index));
-            return View(view);
-        }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ToViewModel v)
+            => !ModelState.IsValid
+                ? View(v)
+                : await repo.AddAsync(ToModel(v))
+                ? RedirectToAction(nameof(Index))
+                : View(v);
         public async Task<IActionResult> Edit(int? id) {
             var m = await repo.GetAsync(id);
             loadlazy = true;
             await loadRelatedItems(m);
-            return m == null ? NotFound() : View(await toViewAsync(m));
+            return m == null ? NotFound() : View(await ToViewAsync(m));
         }
 
-        [HttpPost, ValidateAntiForgeryToken] public async Task<IActionResult> Edit(TViewModel view) {
-            if (!ModelState.IsValid)
-                return View(view);
-            if (await repo.UpdateAsync(ToModel(view)))
-                return RedirectToAction(nameof(Index));
-            return View(view);
-        }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ToViewModel v) =>
+            !ModelState.IsValid
+                ? View(v)
+                : await repo.UpdateAsync(ToModel(v))
+                ? RedirectToAction(nameof(Index))
+                : View(v);
         public async Task<IActionResult> Delete(int? id) {
-            if (id == null)
-                return NotFound();
-            var model = await repo.GetAsync(id);
-            return model == null ? NotFound() : View(ToViewModel(model));
+            var m = await repo.GetAsync(id);
+            loadlazy = true;
+            return m == null ? NotFound() : View(await ToViewAsync(m));
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id) =>
+                await repo.DeleteAsync(id)
+                ? RedirectToAction(nameof(Index))
+                : RedirectToAction(nameof(Delete), id);
 
-        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) {
-            var deleteResult = await repo.DeleteAsync(id);
-            if (!deleteResult)
-                return NotFound();
-            return RedirectToAction(nameof(Index));
+        public async Task<IActionResult> SelectItems(string searchString, int id) {
+            return Ok(await repo.SelectItems(searchString, id));
+        }
+        public async Task<IActionResult> SelectItem(int id) {
+            return Ok(await repo.SelectItem(id));
         }
     }
 }
