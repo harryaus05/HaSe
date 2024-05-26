@@ -35,7 +35,7 @@ namespace HaSe.Pages.Controls;
             "class=\"selectItems2 form-control\" "+
             $"data-controller=\"{controller}\" "+
             $"data-id=\"{v}\">"+
-                "</select>"
+            "</select>"
             );
             var val = h.ValidationMessageFor(e, string.Empty, new { @class = "text-danger" });
 

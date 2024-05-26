@@ -12,12 +12,11 @@ namespace HaSe.Soft.Controllers {
         //protected override PartSpecificationStatus ToModel(PartSpecificationStatusViewModel viewmodel) {
         //    return new PartSpecificationStatus(PropertyCopier.CopyPropertiesFrom<PartSpecificationStatusViewModel, PartSpecificationStatusData>(viewmodel));
         //}
-        //protected override async Task<PartSpecificationStatusViewModel> ToViewAsync(PartSpecificationStatus m) {
-        //    if (loadlazy) await m.LoadLazy();
-        //    var v = await base.ToViewAsync(m);
-        //    v.PartSpecification = m?.PartSpecification.Select(Copy.Members<PartSpecification, PartSpecificationViewModel>).ToList();
-        //    return v;
-        //}
+        protected override async Task<PartSpecificationStatusViewModel> ToViewAsync(PartSpecificationStatus m) {
+            if (loadlazy) await m.LoadLazy();
+            var v = await base.ToViewAsync(m);
+            return v;
+        }
 
         //protected override async Task PopulateRelatedItems(PartSpecificationStatus? model) {
         //    await base.PopulateRelatedItems(model);

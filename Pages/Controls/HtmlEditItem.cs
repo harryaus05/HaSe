@@ -8,7 +8,7 @@ namespace HaSe.Pages.Controls {
         public static IHtmlContent EditItem<TModel, TValue>(this IHtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression) {
             var label = helper.LabelFor(expression, new { @class = "control-label" });
             var editor = helper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
-            var validation = helper.ValidationMessageFor(expression, String.Empty, new { @class = "text-danger" });
+            var validation = helper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
 
             var div = new TagBuilder("div");
             div.AddCssClass("form-group");
