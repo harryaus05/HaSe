@@ -19,8 +19,8 @@
 
 @Html.EditItem(model => model.DateDocumented)
 @Html.EditItem(model => model.Comment)
+@Html.SelectItem(model => model.SpecificationStatus, "PartSpecificationStatus")
 
-@* @Html.EditItem(model => model.PartId) *@
 
 @Html.SelectItem(model => model.PartId, "PartId")
 

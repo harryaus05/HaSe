@@ -1,5 +1,5 @@
-﻿@using HaSe.Pages.Controls
-@model HaSe.Facade.Project.PartSpecificationStatusViewModel
+﻿@model HaSe.Facade.Project.PartSpecificationStatusViewModel
+@using HaSe.Pages.Controls
 
 @Html.SelectItem(model => model.PartSpecificationId, "partspecification")
 
@@ -23,5 +23,4 @@
     </select>
     <span asp-validation-for="Type" class="text-danger" />
 </div>
-
 
