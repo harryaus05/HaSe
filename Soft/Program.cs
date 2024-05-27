@@ -62,10 +62,10 @@ static void EnsureDatabaseCreated(WebApplication app) {
 
 static async Task TryInitializeDatabase(WebApplication app) {
     var db = GetContext<ProjectDbContext>(app);
-    await new PartDbInitializer(db, db.Parts).Initialize(10);
-    await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
-    await new PartSpecificationStatusDbInitializer(db, db.PartSpecificationStatus).Initialize(10);
-    await new PartSpecificationRoleDbInitializer(db, db.PartSpecificationRole).Initialize(10);
+    //await new PartDbInitializer(db, db.Parts).Initialize(10);
+    //await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
+    //await new PartSpecificationStatusDbInitializer(db, db.PartSpecificationStatus).Initialize(10);
+    //await new PartSpecificationRoleDbInitializer(db, db.PartSpecificationRole).Initialize(10);
 }
 
 static TDbContext GetContext<TDbContext>(WebApplication app) where TDbContext : DbContext => app

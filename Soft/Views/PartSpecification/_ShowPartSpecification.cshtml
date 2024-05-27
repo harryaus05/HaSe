@@ -7,7 +7,5 @@
 @Html.ShowItem(model => model.Comment)
 @Html.ShowItem(model => model.PartId)
 
-@Html.ShowItem(model => model.SpecificationStatus, "PartSpecificationStatus")
-@Html.ShowItem(model => model.SpecificationStatus)
 
 @Html.ShowTable(Model?.SpecificationStatus ?? [], string.Empty, string.Empty, 1, false)
