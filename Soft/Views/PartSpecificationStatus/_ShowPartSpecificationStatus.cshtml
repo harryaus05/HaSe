@@ -1,7 +1,18 @@
 ﻿@model HaSe.Facade.Project.PartSpecificationStatusViewModel
 @using HaSe.Pages.Controls
-
+@using HaSe.Facade.Project
+@{
+    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    p.MasterController = "partspecification";
+    p.MasterId = Model?.Id;
+    p.IsEditable = false;
+    p.Items = Model?.PartSpecification ?? [];
+    p.Controller = "part";
+    p.Label = Html.LabelFor(model => model.PartSpecification);
+}
 @Html.ShowItem(model => model.FromDate)
 @Html.ShowItem(model => model.ThruDate)
 @Html.ShowItem(model => model.Type)
 @Html.ShowItem(model => model.PartSpecificationId)
+
+@Html.ShowTable(p)

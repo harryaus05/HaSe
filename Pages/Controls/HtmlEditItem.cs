@@ -5,21 +5,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Pages.Controls {
     public static class HtmlEditItem {
-        public static IHtmlContent EditItem<TModel, TValue>(this IHtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression) {
-            var label = helper.LabelFor(expression, new { @class = "control-label" });
-            var editor = helper.EditorFor(expression, new { htmlAttributes = new { @class = "form-control" } });
-            var validation = helper.ValidationMessageFor(expression, string.Empty, new { @class = "text-danger" });
+        public static IHtmlContent EditItem<TModel, TValue>(this IHtmlHelper<TModel> h, Expression<Func<TModel, TValue>> e) {
 
-            var div = new TagBuilder("div");
-            div.AddCssClass("form-group");
-            div.InnerHtml.AppendHtml(label);
-            div.InnerHtml.AppendHtml(editor);
-            div.InnerHtml.AppendHtml(validation);
+            var lab = h.LabelFor(e, new { @class = "control-label" });
+            var ed = h.EditorFor(e, new { htmlAttributes = new { @class = "form-control" } });
+            var val = h.ValidationMessageFor(e, string.Empty, new { @class = "text-danger" });
 
-            var writer = new StringWriter();
-            div.WriteTo(writer, HtmlEncoder.Default);
-
-            return new HtmlString(writer.ToString());
+            return HtmlControl.Control(lab, ed, val);
         }
     }
 }

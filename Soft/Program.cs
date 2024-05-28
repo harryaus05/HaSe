@@ -24,10 +24,11 @@ builder.Services.AddTransient<IPartsRepo, PartsRepo>();
 builder.Services.AddTransient<IPartSpecificationRepo, PartSpecificationsRepo>();
 builder.Services.AddTransient<IPartSpecificationStatusRepo, PartSpecificationStatusRepo>();
 builder.Services.AddTransient<IPartSpecificationRoleRepo, PartSpecificationRoleRepo>();
+
 GetFromRepo.SetServices(builder.Services);
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -62,10 +63,10 @@ static void EnsureDatabaseCreated(WebApplication app) {
 
 static async Task TryInitializeDatabase(WebApplication app) {
     var db = GetContext<ProjectDbContext>(app);
-    await new PartDbInitializer(db, db.Parts).Initialize(10);
-    await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
-    await new PartSpecificationStatusDbInitializer(db, db.PartSpecificationStatus).Initialize(10);
-    await new PartSpecificationRoleDbInitializer(db, db.PartSpecificationRole).Initialize(10);
+    //await new PartDbInitializer(db, db.Parts).Initialize(10);
+    //await new PartSpecificationDbInitializer(db, db.PartSpecification).Initialize(10);
+    //await new PartSpecificationStatusDbInitializer(db, db.PartSpecificationStatus).Initialize(10);
+    //await new PartSpecificationRoleDbInitializer(db, db.PartSpecificationRole).Initialize(10);
 }
 
 static TDbContext GetContext<TDbContext>(WebApplication app) where TDbContext : DbContext => app

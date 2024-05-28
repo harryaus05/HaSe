@@ -18,10 +18,10 @@ namespace HaSe.Soft.Controllers {
         //    ViewBag.Parts = await new PartsController(partsRepo).SelectListAsync();
         //}
 
-        protected override PartSpecification ToModel(PartSpecificationViewModel v) => new(Copy.Members<PartSpecificationViewModel, PartSpecificationData>(v));
-        protected override async Task<PartSpecificationViewModel> ToViewAsync(PartSpecification m) {
+        protected override PartSpecification toModel(PartSpecificationViewModel v) => new(Copy.Members<PartSpecificationViewModel, PartSpecificationData>(v));
+        protected override async Task<PartSpecificationViewModel> toViewAsync(PartSpecification m) {
             if (loadlazy) await m.LoadLazy();
-            var v = await base.ToViewAsync(m);
+            var v = await base.toViewAsync(m);
             v.SpecificationStatus = m?.SpecificationStatus?.Select(Copy.Members<PartSpecificationStatus, PartSpecificationStatusViewModel>).ToList();
             
             return v;

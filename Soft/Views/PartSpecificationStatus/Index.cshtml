@@ -5,8 +5,10 @@
 @{
     ViewData["Description"] = "Part Specification Status";
     Layout = "_Index";
+    var p = new ShowTableProperties<PartSpecificationStatusViewModel>(ViewBag);
+    p.Items = Model;
 }
 
-@Html.ShowTable(Model, (string)ViewBag.SortOrder, (string)ViewBag.SearchString, (int)ViewBag.PageNumber)
+@Html.ShowTable(p)
 
 

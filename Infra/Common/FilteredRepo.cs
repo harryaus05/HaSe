@@ -8,14 +8,16 @@ namespace HaSe.Infra.Common {
         CrudRepo<TEntity, TData>(c, s), IFilteredRepo<TEntity> where TEntity : Entity<TData> where TData : EntityData, new() {
         public string SearchString { get; set; } = string.Empty;
         public string? FixedFilter { get; set; }
+        public string? FixedValue { get; set; }
 
         protected internal override IQueryable<TData> createSQL() {
             var sql = base.createSQL();
-            sql = (FixedFilter is null) ? addFilter(sql) : addFixedFilter(sql);
+            sql = addSearch(sql);
+            sql = addFixedFilter(sql);
             return sql;
         }
 
         protected virtual IQueryable<TData> addFixedFilter(IQueryable<TData> sql) => sql;
-        protected abstract IQueryable<TData> addFilter(IQueryable<TData> sql);
+        protected abstract IQueryable<TData> addSearch(IQueryable<TData> sql);
     }
 }

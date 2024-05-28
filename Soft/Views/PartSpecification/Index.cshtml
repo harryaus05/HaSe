@@ -1,11 +1,14 @@
 ﻿@using HaSe.Pages.Controls
+@using HaSe.Facade.Project
 @model IEnumerable<HaSe.Facade.Project.PartSpecificationViewModel>
 
 @{
     ViewData["Description"] = "Part Specification";
     Layout = "_Index";
+    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    p.Items = Model;
 }
 
-@Html.ShowTable(Model, (string)ViewBag.SortOrder, (string)ViewBag.SearchString, (int)ViewBag.PageNumber)
+@Html.ShowTable(p)
 
 

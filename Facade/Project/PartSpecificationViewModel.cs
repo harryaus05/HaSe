@@ -18,7 +18,7 @@ namespace HaSe.Facade.Project {
         [DisplayName("Comment")]
         public string? Comment { get; set; }
 
-        [DisplayName("Part Spec Stat")] public List<PartSpecificationStatusViewModel>? SpecificationStatus { get; set; }
+        [DisplayName("Part Specification Status")] public List<PartSpecificationStatusViewModel>? SpecificationStatus { get; set; }
     }
     public abstract class PartRelationViewModel : EntityViewModel {
         [DisplayName("Part Id")][Required] public int PartId { get; set; }
