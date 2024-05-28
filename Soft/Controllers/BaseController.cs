@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Soft.Controllers {
-    public abstract class BaseController<TModel, ToViewModel>(IRepo<TModel> r) : Controller
-    where TModel : class where ToViewModel : EntityViewModel, new() {
+    public abstract class BaseController<TModel, TView>(IRepo<TModel> r) : Controller
+    where TModel : class where TView : EntityViewModel, new() {
         protected readonly IRepo<TModel> repo = r;
         protected bool loadlazy;
         protected async virtual Task loadRelatedItems(TModel? m) => await Task.CompletedTask;
-        protected abstract TModel ToModel(ToViewModel v);
-        protected virtual async Task<ToViewModel> ToViewAsync(TModel m) {
+        protected abstract TModel toModel(TView v);
+        protected virtual async Task<TView> toViewAsync(TModel m) {
             await Task.CompletedTask;
-            return Copy.Members<TModel, ToViewModel>(m);
+            return Copy.Members<TModel, TView>(m);
         }
         protected virtual string selectItemTextField => nameof(EntityViewModel.Id);
         public async Task<IActionResult> Index(string sortOrder, string searchString, int? pageNumber) {
@@ -29,53 +29,74 @@ namespace HaSe.Soft.Controllers {
             ViewBag.SortOrder = repo.SortOrder;
             ViewBag.TotalPages = repo.TotalPages;
             var list = await repo.GetAsync();
-            var tasks = list.Select(ToViewAsync);
+            var tasks = list.Select(toViewAsync);
             var viewList = await Task.WhenAll(tasks);
             return View(viewList);
         }
-        public async Task<IActionResult> Details(int? id) {
+        public async Task<IActionResult> Details(int? id, string? masterController, int? masterId) {
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
             var m = await repo.GetAsync(id);
             loadlazy = true;
-            return m == null ? NotFound() : View(await ToViewAsync(m));
+            return m == null ? NotFound() : View(await toViewAsync(m));
         }
-        public async Task<IActionResult> Create() {
+        public async Task<IActionResult> Create(string? masterController, int? masterId) {
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
             await loadRelatedItems(null);
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ToViewModel v)
-            => !ModelState.IsValid
-                ? View(v)
-                : await repo.AddAsync(ToModel(v))
-                ? RedirectToAction(nameof(Index))
-                : View(v);
-        public async Task<IActionResult> Edit(int? id) {
+        public async Task<IActionResult> Create(TView v, string? masterController, int? masterId) {
+            if (!ModelState.IsValid) return View(v);
+            if (await repo.AddAsync(toModel(v))) {
+                if (masterController is null) return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", masterController, new { id = masterId });
+            }
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
+            ModelState.AddModelError(string.Empty, repo.ErrorMessage);
+            return View(v);
+        }
+        public async Task<IActionResult> Edit(int? id, string? masterController, int? masterId) {
+            ViewBag.IsEditView = true;
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
             var m = await repo.GetAsync(id);
             loadlazy = true;
             await loadRelatedItems(m);
-            return m == null ? NotFound() : View(await ToViewAsync(m));
+            return m == null ? NotFound() : View(await toViewAsync(m));
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(ToViewModel v) =>
-            !ModelState.IsValid
-                ? View(v)
-                : await repo.UpdateAsync(ToModel(v))
-                ? RedirectToAction(nameof(Index))
-                : View(v);
-        public async Task<IActionResult> Delete(int? id) {
+        public async Task<IActionResult> Edit(TView v, string? masterController, int? masterId) {
+            if (!ModelState.IsValid) return View(v);
+            if (await repo.UpdateAsync(toModel(v))) {
+                if (masterController is null) return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", masterController, new { id = masterId });
+            }
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
+            ModelState.AddModelError(string.Empty, repo.ErrorMessage);
+            return View(v);
+        }
+        public async Task<IActionResult> Delete(int? id, string? masterController, int? masterId) {
+            ViewBag.MasterController = masterController;
+            ViewBag.MasterId = masterId;
             var m = await repo.GetAsync(id);
             loadlazy = true;
-            return m == null ? NotFound() : View(await ToViewAsync(m));
+            return m == null ? NotFound() : View(await toViewAsync(m));
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) =>
-                await repo.DeleteAsync(id)
-                ? RedirectToAction(nameof(Index))
-                : RedirectToAction(nameof(Delete), id);
+        public async Task<IActionResult> DeleteConfirmed(int id, string? masterController, int? masterId) {
+            if (await repo.DeleteAsync(id)) {
+                if (masterController is null) return RedirectToAction(nameof(Index));
+                return RedirectToAction("Edit", masterController, new { id = masterId });
+            }
+            return RedirectToAction(nameof(Delete), new { id, masterController, masterId });
+        }
 
         public async Task<IActionResult> SelectItems(string searchString, int id) {
             return Ok(await repo.SelectItems(searchString, id));

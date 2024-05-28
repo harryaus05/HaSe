@@ -9,7 +9,7 @@ namespace HaSe.Soft.Controllers {
         : BaseController<PartSpecificationRole, PartSpecificationRoleViewModel>(repo) {
         protected override string selectItemTextField => nameof(PartSpecificationRoleViewModel.PartyName);
 
-        protected override PartSpecificationRole ToModel(PartSpecificationRoleViewModel viewmodel) {
+        protected override PartSpecificationRole toModel(PartSpecificationRoleViewModel viewmodel) {
             return new PartSpecificationRole(
                 PropertyCopier
                     .CopyPropertiesFrom<PartSpecificationRoleViewModel, PartSpecificationRoleData>(viewmodel));

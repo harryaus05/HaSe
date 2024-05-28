@@ -9,6 +9,7 @@ namespace HaSe.Infra.Common {
 
         internal readonly DbContext db = c;
         internal readonly DbSet<TData> set = s;
+        public string? ErrorMessage { get; private set; }
         protected abstract TEntity ToEntity(TData? d);
 
         protected internal virtual IQueryable<TData> createSQL() =>
@@ -17,8 +18,10 @@ namespace HaSe.Infra.Common {
             try {
                 await set.AddAsync(obj.Data);
                 await db.SaveChangesAsync();
+                ErrorMessage = null;
                 return true;
-            } catch {
+            } catch (Exception e) {
+                ErrorMessage = e?.InnerException?.Message;
                 db.ChangeTracker.Clear();
                 return false;
             }
@@ -28,8 +31,10 @@ namespace HaSe.Infra.Common {
                 var m = await getAsync(id);
                 if (m != null) set.Remove(m);
                 await db.SaveChangesAsync();
+                ErrorMessage = null;
                 return true;
-            } catch {
+            } catch (Exception e) {
+                ErrorMessage = e?.InnerException?.Message;
                 db.ChangeTracker.Clear();
                 return false;
             }
@@ -44,8 +49,10 @@ namespace HaSe.Infra.Common {
             try {
                 set.Update(obj.Data);
                 await db.SaveChangesAsync();
+                ErrorMessage = null;
                 return true;
-            } catch {
+            } catch (Exception e) {
+                ErrorMessage = e?.InnerException?.Message;
                 db.ChangeTracker.Clear();
                 return false;
             }

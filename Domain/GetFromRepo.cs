@@ -19,7 +19,7 @@ namespace HaSe.Domain {
             where TRepo : IRepo<TEntity> where TEntity : class {
             var r = repo<TRepo, TEntity>();
             if (r is null) return null;
-            r.SearchString = value.ToString();
+            r.FixedValue = value.ToString();
             r.FixedFilter = property;
             r.PageSize = r.TotalItems;
             var l = await r.GetAsync();

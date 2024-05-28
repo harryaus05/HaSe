@@ -24,10 +24,11 @@ builder.Services.AddTransient<IPartsRepo, PartsRepo>();
 builder.Services.AddTransient<IPartSpecificationRepo, PartSpecificationsRepo>();
 builder.Services.AddTransient<IPartSpecificationStatusRepo, PartSpecificationStatusRepo>();
 builder.Services.AddTransient<IPartSpecificationRoleRepo, PartSpecificationRoleRepo>();
+
 GetFromRepo.SetServices(builder.Services);
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();

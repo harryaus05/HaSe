@@ -8,7 +8,7 @@ namespace HaSe.Infra.Project
     public class PartSpecificationsRepo(ProjectDbContext context) :
         Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationRepo
     {
-        protected override IQueryable<PartSpecificationData> addFilter(IQueryable<PartSpecificationData> sql)
+        protected override IQueryable<PartSpecificationData> addSearch(IQueryable<PartSpecificationData> sql)
         {
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.Description != null

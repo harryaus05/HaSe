@@ -17,8 +17,8 @@ namespace HaSe.Soft.Controllers {
     //}
     public class PartsController(IPartsRepo repo) : BaseController<Part, PartViewModel>(repo) {
         protected override string selectItemTextField => nameof(PartViewModel.Name);
-        protected override Part ToModel(PartViewModel viewmodel) {
-            return new Part(PropertyCopier.CopyPropertiesFrom<PartViewModel, PartData>(viewmodel));
+        protected override Part toModel(PartViewModel viewmodel) {
+            return new (Copy.Members<PartViewModel, PartData>(viewmodel));
         }
 
         //protected override PartViewModel ToViewModel(Part model) {
@@ -26,9 +26,9 @@ namespace HaSe.Soft.Controllers {
         //    viewModel.Name = "model.ToString()";
         //    return viewModel;
         //}
-        protected override async Task<PartViewModel> ToViewAsync(Part m) {
+        protected override async Task<PartViewModel> toViewAsync(Part m) {
             if (loadlazy) await m.LoadLazy();
-            var v = await base.ToViewAsync(m);
+            var v = await base.toViewAsync(m);
             return v;
         }
     }
