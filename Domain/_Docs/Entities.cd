@@ -3,7 +3,7 @@
   <Class Name="HaSe.Domain.Entity&lt;TData&gt;">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAEAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
       <FileName>Entity.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -15,23 +15,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HaSe.Domain.Project.PartSpecification">
-    <Position X="7.25" Y="3.5" Width="1.5" />
+    <Position X="7.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAEAAAgAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>BAAAAAAEIAAgAgAAAEAAQAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Project\PartSpecification.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HaSe.Domain.Project.PartSpecificationRole">
-    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Position X="5.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAA=</HashCode>
       <FileName>Project\PartSpecificationRole.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HaSe.Domain.Project.PartSpecificationStatus">
-    <Position X="2.5" Y="3.5" Width="1.5" />
+    <Position X="2.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAA=</HashCode>
+      <HashCode>AAAQAAAAAAAAAFAAAEAAAAAAAAAACAAAAQAAAAABAAA=</HashCode>
       <FileName>Project\PartSpecificationStatus.cs</FileName>
     </TypeIdentifier>
   </Class>
