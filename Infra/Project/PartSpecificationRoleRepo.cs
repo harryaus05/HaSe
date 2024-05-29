@@ -12,7 +12,8 @@ namespace HaSe.Infra.Project
             return string.IsNullOrEmpty(SearchString) ? sql
                 : sql.Where(s => s.PartyName != null
                     && (s.PartyName.Contains(SearchString)
-                    || s.Type.Contains(SearchString)));
+                    || s.Type.Contains(SearchString)
+                    || s.PartSpecificationId.ToString().Contains(SearchString)));
         }
 
         protected override PartSpecificationRole ToEntity(PartSpecificationRoleData? d) {

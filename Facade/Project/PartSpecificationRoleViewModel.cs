@@ -10,5 +10,6 @@ namespace HaSe.Facade.Project {
         [DisplayName("Type")]
         [Required]
         public string Type { get; set; }
+        [DisplayName("Part Specification")] public int PartSpecificationId { get; set; }
     }
 }
