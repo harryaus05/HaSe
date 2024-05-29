@@ -1,8 +1,17 @@
 ﻿@using HaSe.Pages.Controls
+@using HaSe.Facade.Project
 @model HaSe.Facade.Project.PartViewModel
 
 @Html.EditItem(model => model.Name)
 
+@{
+    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    p.MasterController = "partspecification";
+    p.MasterId = Model?.Id;
+    p.IsEditable = true;
+    p.Items = Model?.PartSpecifications ?? [];
+    p.Label = Html.LabelFor(model => model.PartSpecifications);
+}
 
 <div class="form-group">
     <label asp-for="Type" class="control-label"></label>
@@ -14,3 +23,5 @@
     </select>
     <span asp-validation-for="Type" class="text-danger" />
 </div>
+
+@if (ViewBag.IsEditView != null && ViewBag.IsEditView == true) @Html.ShowTable(p)

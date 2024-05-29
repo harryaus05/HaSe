@@ -1,13 +1,13 @@
 ﻿@using HaSe.Pages.Controls
 @using HaSe.Facade.Project
 @model HaSe.Facade.Project.PartSpecificationViewModel
-@* 
-@{
-    var p = new ShowTableProperties<PartSpecificationStatusViewModel>(ViewBag);
-    p.MasterController = "partspecificationstatus";
+
+@* @{
+    var p = new ShowTableProperties<PartViewModel>(ViewBag);
+    p.MasterController = "partspecification";
     p.MasterId = Model?.Id;
     p.IsEditable = false;
-    p.Items = Model?.PartSpecificationStatus ?? [];
+    p.Items = Model?. ?? [];
     p.Controller = "part";
     p.Label = Html.LabelFor(model => model.PartSpecificationStatus);
 }
