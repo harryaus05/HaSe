@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="HaSe.Domain.Common.ICrudRepo&lt;TEntity&gt;">
+    <Position X="8" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEACAAAAAgAAAAAIAAAAIA=</HashCode>
+      <FileName>Common\ICrudRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="HaSe.Domain.Common.IFilteredRepo&lt;TEntity&gt;">
     <Position X="5.75" Y="2.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Common\IFilteredRepo.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -17,7 +24,7 @@
   <Interface Name="HaSe.Domain.Common.IPagedRepo&lt;TEntity&gt;">
     <Position X="1" Y="2.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AACAAgAAAAAAAAAAAAAAAAAWAAQAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AACAAgAAAAAQAAAAAAAAAAAUAAQAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Common\IPagedRepo.cs</FileName>
     </TypeIdentifier>
   </Interface>

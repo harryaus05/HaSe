@@ -9,7 +9,7 @@ namespace HaSe.Tests.Domain.Common
         [TestMethod] public void UpdateAsyncTest() => MethodTest<Task<bool>>(typeof(Part));
         [TestMethod] public void AddAsyncTest() => MethodTest<Task<bool>>(typeof(Part));
         [TestMethod] public void DeleteAsyncTest() => MethodTest<Task<bool>>(typeof(int));
-        [TestMethod] public void ErrorMessageTest() => PropertyTest<string>();
 
+    
     }
 }
