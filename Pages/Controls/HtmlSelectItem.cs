@@ -1,8 +1,6 @@
-﻿using HaSe.Helpers;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq.Expressions;
-using System.Text.Encodings.Web;
 
 namespace HaSe.Pages.Controls;
 public static class HtmlSelectItem {

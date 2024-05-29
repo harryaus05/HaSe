@@ -1,4 +1,5 @@
 ﻿@using HaSe.Pages.Controls
+@using HaSe.Facade.Project
 @model HaSe.Facade.Project.PartSpecificationViewModel
 
 @Html.EditItem(model => model.Description)
@@ -16,11 +17,20 @@
     </select>
     <span asp-validation-for="Type" class="text-danger" />
 </div>
+@* 
+@{
+    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    p.MasterController = "partspecification";
+    p.MasterId = Model?.Id;
+    p.IsEditable = false;
+    p.Items = Model?.PartSpecification ?? [];
+    p.Controller = "part";
+    p.Label = Html.LabelFor(model => model.PartSpecification);
+} *@
 
 @Html.EditItem(model => model.DateDocumented)
 @Html.EditItem(model => model.Comment)
 @Html.SelectItem(model => model.SpecificationStatus, "PartSpecificationStatus")
 
-
-@Html.SelectItem(model => model.PartId, "PartId")
+@Html.SelectItem(model => model.PartId, "Parts")
 

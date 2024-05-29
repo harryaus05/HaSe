@@ -22,5 +22,6 @@ namespace HaSe.Facade.Project {
     }
     public abstract class PartRelationViewModel : EntityViewModel {
         [DisplayName("Part Id")][Required] public int PartId { get; set; }
+        [DisplayName("Parts")] public List<PartViewModel>? Parts { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace HaSe.Infra.Project
     public class PartSpecificationsRepo(ProjectDbContext context) :
         Repo<PartSpecification,PartSpecificationData>(context, context.PartSpecification), IPartSpecificationRepo
     {
+        protected internal override string selectTextField => nameof(PartSpecificationData.Description);
         protected override IQueryable<PartSpecificationData> addSearch(IQueryable<PartSpecificationData> sql)
         {
             return string.IsNullOrEmpty(SearchString) ? sql
