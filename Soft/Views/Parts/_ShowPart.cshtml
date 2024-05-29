@@ -1,6 +1,16 @@
 ﻿@using HaSe.Pages.Controls
+@using HaSe.Facade.Project
 @model HaSe.Facade.Project.PartViewModel
+
+@{
+    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    p.MasterController = "partspecification";
+    p.MasterId = Model?.Id;
+    p.IsEditable = true;
+    p.Items = Model?.PartSpecifications ?? [];
+    p.Label = Html.LabelFor(model => model.PartSpecifications);
+}
 
 @Html.ShowItem(model => model.Name)
 @Html.ShowItem(model => model.Type)
-
+@Html.ShowTable(p)

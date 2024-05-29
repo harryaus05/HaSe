@@ -6,7 +6,7 @@ using HaSe.Infra.Common;
 namespace HaSe.Infra.Project {
     public class PartSpecificationStatusRepo(ProjectDbContext context) : 
         Repo<PartSpecificationStatus, PartSpecificationStatusData>(context, context.PartSpecificationStatus), IPartSpecificationStatusRepo {
-        protected internal override string selectTextField => nameof(PartSpecification.Description);
+        protected internal override string selectTextField => nameof(PartSpecificationStatusData.Type);
         protected override IQueryable<PartSpecificationStatusData> addSearch(IQueryable<PartSpecificationStatusData> sql) {
             return string.IsNullOrEmpty(SearchString)
                 ? sql
