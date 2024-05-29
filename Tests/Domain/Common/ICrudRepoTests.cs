@@ -10,6 +10,5 @@ namespace HaSe.Tests.Domain.Common
         [TestMethod] public void AddAsyncTest() => MethodTest<Task<bool>>(typeof(Part));
         [TestMethod] public void DeleteAsyncTest() => MethodTest<Task<bool>>(typeof(int));
 
-    
     }
 }
