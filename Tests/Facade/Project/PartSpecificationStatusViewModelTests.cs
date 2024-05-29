@@ -1,8 +1,6 @@
 ﻿using HaSe.Facade;
 using HaSe.Facade.Project;
 using HaSe.Tests.Helpers;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 
 namespace HaSe.Tests.Facade.Project
 {

@@ -1,9 +1,7 @@
 ﻿using HaSe.Domain.Common;
 using HaSe.Facade;
-using HaSe.Facade.Project;
 using HaSe.Helpers.Methods;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HaSe.Soft.Controllers {
     public abstract class BaseController<TModel, TView>(IRepo<TModel> r) : Controller

@@ -1,6 +1,4 @@
-﻿using HaSe.Facade.Project;
-using HaSe.Helpers.Methods;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+﻿using HaSe.Helpers.Methods;
 
 namespace HaSe.Tests.Helpers.Methods {
     [TestClass] public class GetRandomTests : BaseTests {
