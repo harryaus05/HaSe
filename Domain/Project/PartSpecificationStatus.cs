@@ -10,7 +10,7 @@ namespace HaSe.Domain.Project {
             PSpecification ??= await GetFromRepo.Items<IPartSpecificationRepo, PartSpecification>(nameof(PartSpecificationData.Id), Id);
         }
         public DateTime FromDate => data.FromDate;
-        public DateTime ThruDate => data.ThruDate;
+        public DateTime? ThruDate => data.ThruDate;
         public int PartSpecificationId => data.PartSpecificationId;
         public PartSpecification? Specification { get; private set; }
         public List<PartSpecification>? PSpecification { get; private set; }

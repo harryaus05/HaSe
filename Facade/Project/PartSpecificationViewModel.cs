@@ -22,6 +22,6 @@ namespace HaSe.Facade.Project {
         [DisplayName("Part Specification Role")] public List<PartSpecificationRoleViewModel>? SpecificationRole { get; set; }
     }
     public abstract class PartRelationViewModel : EntityViewModel {
-        [DisplayName("Part Id")][Required] public int PartId { get; set; }
+        [DisplayName("Part Id")][Required(ErrorMessage = "Part Id is required")] public int PartId { get; set; }
     }
 }
