@@ -59,5 +59,4 @@ namespace HaSe.Infra.Common {
         }
         protected bool isInDbSet(int id) => set.Any(e => e.Id == id);
     }
-
 }

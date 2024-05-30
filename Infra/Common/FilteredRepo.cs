@@ -16,7 +16,6 @@ namespace HaSe.Infra.Common {
             sql = addFixedFilter(sql);
             return sql;
         }
-
         protected virtual IQueryable<TData> addFixedFilter(IQueryable<TData> sql) => sql;
         protected abstract IQueryable<TData> addSearch(IQueryable<TData> sql);
     }

@@ -9,21 +9,11 @@ namespace HaSe.Soft.Controllers {
 
         protected override PartSpecificationStatus toModel(PartSpecificationStatusViewModel v) => new(Copy.Members<PartSpecificationStatusViewModel, PartSpecificationStatusData>(v));
         protected override string selectItemTextField => nameof(PartSpecificationStatusViewModel.FromDate);
-        //protected override PartSpecificationStatus ToModel(PartSpecificationStatusViewModel viewmodel) {
-        //    return new PartSpecificationStatus(PropertyCopier.CopyPropertiesFrom<PartSpecificationStatusViewModel, PartSpecificationStatusData>(viewmodel));
-        //}
         protected override async Task<PartSpecificationStatusViewModel> toViewAsync(PartSpecificationStatus m) {
             if (loadlazy) await m.LoadLazy();
             var v = await base.toViewAsync(m);
             v.PartSpecification = m?.PSpecification?.Select(Copy.Members<PartSpecification, PartSpecificationViewModel>).ToList();
             return v;
         }
-
-        //protected override async Task PopulateRelatedItems(PartSpecificationStatus? model) {
-        //    await base.PopulateRelatedItems(model);
-        //    if(partsRepo is null)
-        //        return;
-        //    ViewBag.Parts = await new PartSpecificationController(partsRepo).SelectListAsync();
-        //}
     }
 }

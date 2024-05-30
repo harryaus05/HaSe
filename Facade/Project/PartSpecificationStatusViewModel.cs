@@ -10,8 +10,4 @@ namespace HaSe.Facade.Project {
         [DisplayName("Part Specification")] public int PartSpecificationId { get; set; }
         [DisplayName("Part Specification")] public List<PartSpecificationViewModel>? PartSpecification { get; set; }
     }
-    //public abstract class PartSpecificationStatusRelationViewModel : EntityViewModel {
-    //    [DisplayName("PartSpecification")]
-    //    public int PartSpecificationId { get; set; }
-    //}
 }
