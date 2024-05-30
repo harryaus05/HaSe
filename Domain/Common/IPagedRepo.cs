@@ -1,5 +1,4 @@
-﻿
-namespace HaSe.Domain.Common {
+﻿namespace HaSe.Domain.Common {
     public interface IPagedRepo<TEntity>:
         IOrderedRepo<TEntity> where TEntity : class {
         int? PageNumber { get; set; }

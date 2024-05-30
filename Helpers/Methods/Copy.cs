@@ -1,5 +1,4 @@
-﻿
-namespace HaSe.Helpers.Methods;
+﻿namespace HaSe.Helpers.Methods;
 public static class Copy {
     public static TTo Members<TFrom, TTo>(TFrom f) where TFrom: class where TTo: new(){
         var t = new TTo();

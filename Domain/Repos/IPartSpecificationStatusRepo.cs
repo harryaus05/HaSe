@@ -2,6 +2,5 @@
 using HaSe.Domain.Project;
 
 namespace HaSe.Domain.Repos {
-    public interface IPartSpecificationStatusRepo : IRepo<PartSpecificationStatus> {
-    }
+    public interface IPartSpecificationStatusRepo : IRepo<PartSpecificationStatus> { }
 }
