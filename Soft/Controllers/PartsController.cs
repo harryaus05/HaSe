@@ -10,12 +10,6 @@ namespace HaSe.Soft.Controllers {
         protected override Part toModel(PartViewModel viewmodel) {
             return new (Copy.Members<PartViewModel, PartData>(viewmodel));
         }
-
-        //protected override PartViewModel ToViewModel(Part model) {
-        //    var viewModel = base.ToViewModel(model);
-        //    viewModel.Name = "model.ToString()";
-        //    return viewModel;
-        //}
         protected override async Task<PartViewModel> toViewAsync(Part m) {
             if (loadlazy) await m.LoadLazy();
             var v = await base.toViewAsync(m);
