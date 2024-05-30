@@ -108,7 +108,7 @@ namespace HaSe.Pages.Controls {
         }
         private static string newName(PropertyInfo p, string? sortOrder) {
             var name = p.Name;
-            var displayName = p.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? name;
+            var displayName = p.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName?? name;
             if (string.IsNullOrEmpty(sortOrder)) return displayName;
             if (!sortOrder.StartsWith(name)) return displayName;
             if (sortOrder.EndsWith("_desc")) return $"{displayName} ↓";

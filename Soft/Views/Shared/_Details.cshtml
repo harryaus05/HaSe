@@ -4,14 +4,17 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>@ViewData["Description"]</h4>
-    <hr />
-    <dl class="row">
-        @RenderBody()
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+<h4>@ViewData["Description"]</h4>
+<hr />
+
+<dl class="row">
+    @RenderBody()
+</dl>
+
+<a asp-action="Edit" asp-route-id="@ViewData["ItemId"]" asp-route-masterController="@ViewBag.MasterController" asp-route-masterId="@ViewBag.MasterId">Edit</a>
+
+@if (ViewBag.MasterController is null) {
     <a asp-action="Index">Back to List</a>
-</div>
+} else {
+    <a asp-action="Edit" asp-controller="@ViewBag.MasterController" asp-route-id="@ViewBag.MasterId">Back to List</a>
+}

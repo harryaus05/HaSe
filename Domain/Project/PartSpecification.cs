@@ -7,7 +7,6 @@ namespace HaSe.Domain.Project {
             await base.LoadLazy();
             SpecificationStatus ??= await GetFromRepo.Items<IPartSpecificationStatusRepo, PartSpecificationStatus>(nameof(PartSpecificationStatusData.PartSpecificationId), Id);
             Part ??= await GetFromRepo.Item<IPartsRepo, Part>(PartId);
-            Parts ??= await GetFromRepo.Items<IPartsRepo, Part>(nameof(PartData.Name), Id);
         }
         public string Description => data.Description;
         public string Type => data.Type;
@@ -16,6 +15,5 @@ namespace HaSe.Domain.Project {
         public string? Comment => data.Comment;
         public int PartId => data.PartId;
         public Part? Part { get; private set; }
-        public List<Part>? Parts { get; private set; }
     }
 }

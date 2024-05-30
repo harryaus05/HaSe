@@ -7,7 +7,7 @@ namespace HaSe.Domain.Project {
         public override async Task LoadLazy() {
             await base.LoadLazy();
             Specification ??= await GetFromRepo.Item<IPartSpecificationRepo, PartSpecification>(PartSpecificationId);
-            PSpecification ??= await GetFromRepo.Items<IPartSpecificationRepo, PartSpecification>(nameof(PartSpecificationData.Description), Id);
+            PSpecification ??= await GetFromRepo.Items<IPartSpecificationRepo, PartSpecification>(nameof(PartSpecificationData.Id), Id);
         }
         public DateTime FromDate => data.FromDate;
         public DateTime ThruDate => data.ThruDate;

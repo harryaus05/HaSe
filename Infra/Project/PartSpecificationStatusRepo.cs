@@ -8,7 +8,7 @@ namespace HaSe.Infra.Project {
         Repo<PartSpecificationStatus, PartSpecificationStatusData>(context, context.PartSpecificationStatus), IPartSpecificationStatusRepo {
         protected internal override string selectTextField => nameof(PartSpecificationStatusData.Type);
         protected override IQueryable<PartSpecificationStatusData> addSearch(IQueryable<PartSpecificationStatusData> sql) {
-            return string.IsNullOrEmpty(SearchString)
+            return string.IsNullOrWhiteSpace(SearchString)
                 ? sql
                 : sql.Where(s => (s.FromDate != null
                                  && (s.FromDate.ToString().Contains(SearchString))

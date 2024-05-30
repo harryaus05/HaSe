@@ -6,24 +6,23 @@
 
 <h4>@ViewData["Description"]</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="@ViewData["ItemId"]" />
+<form asp-action="Edit" asp-route-masterController="@ViewBag.MasterController" asp-route-masterId="@ViewBag.MasterId">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for=@ViewData["ItemId"] />
 
-            @RenderBody()
+    <dl class="row">
+        @RenderBody()
+    </dl>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <input type="submit" value="Save" class="btn btn-primary" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    @if (ViewBag.MasterController is null) {
+        <a asp-action="Index">Back to List</a>
+    } else {
+        <a asp-action="Edit" asp-controller="@ViewBag.MasterController" asp-route-id="@ViewBag.MasterId">Back to List</a>
+    }
+
+</form>
 
 @section Scripts {
     @{

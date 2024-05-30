@@ -9,7 +9,7 @@ namespace HaSe.Infra.Project
         Repo<PartSpecificationRole, PartSpecificationRoleData>(c, c.PartSpecificationRole), IPartSpecificationRoleRepo {
         protected override IQueryable<PartSpecificationRoleData> addSearch(IQueryable<PartSpecificationRoleData> sql)
         {
-            return string.IsNullOrEmpty(SearchString) ? sql
+            return string.IsNullOrWhiteSpace(SearchString) ? sql
                 : sql.Where(s => s.PartyName != null
                     && (s.PartyName.Contains(SearchString)
                     || s.Type.Contains(SearchString)

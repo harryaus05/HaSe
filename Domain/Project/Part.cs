@@ -6,7 +6,7 @@ namespace HaSe.Domain.Project {
 
         public override async Task LoadLazy() {
             await base.LoadLazy();
-            PartSpecifications ??= await GetFromRepo.Items<IPartSpecificationRepo, PartSpecification>(nameof(PartSpecificationData.PartId), Id);
+            PartSpecifications ??= await GetFromRepo.Items<IPartSpecificationRepo, PartSpecification> (nameof(PartSpecificationData.PartId), Id);
         }
         public string Name => data.Name;
         public string Type => data.Type;

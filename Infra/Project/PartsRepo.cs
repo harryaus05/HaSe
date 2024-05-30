@@ -10,10 +10,10 @@ namespace HaSe.Infra.Project
         protected internal override string selectTextField => nameof(PartData.Name);
         protected override IQueryable<PartData> addSearch(IQueryable<PartData> sql)
         {
-            return string.IsNullOrEmpty(SearchString) ? sql
-                : sql.Where(s => s.Name != null
-                    && (s.Name.Contains(SearchString)
-                    || s.Type.Contains(SearchString)));
+            return string.IsNullOrWhiteSpace(SearchString) 
+                ? sql
+                : sql.Where(s => (s.Name != null && s.Name.Contains(SearchString)) 
+                                 || s.Type.Contains(SearchString));
         }
 
         protected override Part ToEntity(PartData? data) {

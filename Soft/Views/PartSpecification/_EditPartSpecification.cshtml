@@ -17,20 +17,22 @@
     </select>
     <span asp-validation-for="Type" class="text-danger" />
 </div>
-@* 
+
 @{
-    var p = new ShowTableProperties<PartSpecificationViewModel>(ViewBag);
+    var p = new ShowTableProperties<PartSpecificationStatusViewModel>(ViewBag);
     p.MasterController = "partspecification";
     p.MasterId = Model?.Id;
     p.IsEditable = false;
-    p.Items = Model?.PartSpecification ?? [];
+    p.Items = Model?.SpecificationStatus ?? [];
     p.Controller = "part";
-    p.Label = Html.LabelFor(model => model.PartSpecification);
-} *@
+    p.Label = Html.LabelFor(model => model.SpecificationStatus);
+}
 
 @Html.EditItem(model => model.DateDocumented)
 @Html.EditItem(model => model.Comment)
-@Html.SelectItem(model => model.SpecificationStatus, "PartSpecificationStatus")
-
 @Html.SelectItem(model => model.PartId, "Parts")
+
+@if (ViewBag.IsEditView != null && ViewBag.IsEditView == true)
+    @Html.ShowTable(p)
+
 

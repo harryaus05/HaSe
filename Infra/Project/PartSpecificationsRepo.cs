@@ -11,7 +11,7 @@ namespace HaSe.Infra.Project
         protected internal override string selectTextField => nameof(PartSpecificationData.Description);
         protected override IQueryable<PartSpecificationData> addSearch(IQueryable<PartSpecificationData> sql)
         {
-            return string.IsNullOrEmpty(SearchString) ? sql
+            return string.IsNullOrWhiteSpace(SearchString) ? sql
                 : sql.Where(s => s.Description != null
                                  && (s.Description.Contains(SearchString)
                                      || s.Type.Contains(SearchString)
@@ -22,7 +22,8 @@ namespace HaSe.Infra.Project
 
         protected override PartSpecification ToEntity(PartSpecificationData? d) => new(d);
         protected override IQueryable<PartSpecificationData> addFixedFilter(IQueryable<PartSpecificationData> sql) =>
-         (FixedFilter == nameof(PartSpecificationData.PartId)) ? sql.Where(s => s.PartId.ToString() == SearchString)
-        : sql;
+            (FixedFilter == nameof(PartSpecificationData.PartId)) ? sql.Where(s => s.PartId.ToString() == FixedValue)
+                : sql;
+       
     }
 }
