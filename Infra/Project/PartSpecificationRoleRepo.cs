@@ -20,7 +20,7 @@ namespace HaSe.Infra.Project
             return new PartSpecificationRole(d);
         }
         protected override IQueryable<PartSpecificationRoleData> addFixedFilter(IQueryable<PartSpecificationRoleData> sql) =>
-            (FixedFilter == nameof(PartSpecificationRoleData.Type)) ? sql.Where(s => s.Type.ToString() == SearchString)
+            (FixedFilter == nameof(PartSpecificationRoleData.PartSpecificationId)) ? sql.Where(s => s.PartSpecificationId.ToString() == FixedValue)
                 : sql;
 
 

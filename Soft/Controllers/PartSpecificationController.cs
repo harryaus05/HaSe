@@ -12,7 +12,8 @@ namespace HaSe.Soft.Controllers {
             if (loadlazy) await m.LoadLazy();
             var v = await base.toViewAsync(m);
             v.SpecificationStatus = m?.SpecificationStatus?.Select(Copy.Members<PartSpecificationStatus, PartSpecificationStatusViewModel>).ToList();
-            
+            v.SpecificationRole = m?.SpecificationRole?.Select(Copy.Members<PartSpecificationRole, PartSpecificationRoleViewModel>).ToList();
+
             return v;
         }
     }

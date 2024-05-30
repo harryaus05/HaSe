@@ -3,13 +3,22 @@
 @model HaSe.Facade.Project.PartSpecificationViewModel
 
 @{
-    var p = new ShowTableProperties<PartSpecificationStatusViewModel>(ViewBag);
-    p.MasterController = "partspecification";
-    p.MasterId = Model?.Id;
-    p.IsEditable = false;
-    p.Items = Model?.SpecificationStatus ?? [];
-    p.Controller = "part";
-    p.Label = Html.LabelFor(model => model.SpecificationStatus);
+    ShowTableProperties<TEntity> create<TEntity>() {
+        var p = new ShowTableProperties<TEntity>(ViewBag);
+        p.MasterController = "partspecification";
+        p.MasterId = Model?.Id;
+        p.IsEditable = false;
+        return p;
+    }
+    var p1 = create<PartSpecificationStatusViewModel>();
+    p1.Items = Model?.SpecificationStatus ?? [];
+    p1.Controller = "partspecificationstatus";
+    p1.Label = Html.LabelFor(model => model.SpecificationStatus);
+
+    var p2 = create<PartSpecificationRoleViewModel>();
+    p2.Items = Model?.SpecificationRole ?? [];
+    p2.Controller = "partspecificationrole";
+    p2.Label = Html.LabelFor(model => model.SpecificationRole);
 }
 
 @Html.ShowItem(model => model.Description)
@@ -18,4 +27,6 @@
 @Html.ShowItem(model => model.Comment)
 @Html.ShowItem(model => model.PartId)
 
-@Html.ShowTable(p)
+
+@Html.ShowTable(p1)
+@Html.ShowTable(p2)

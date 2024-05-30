@@ -17,5 +17,8 @@ namespace HaSe.Infra.Project {
                                  || s.Type.Contains(SearchString)));
         }
         protected override PartSpecificationStatus ToEntity(PartSpecificationStatusData? data) => new(data);
+        protected override IQueryable<PartSpecificationStatusData> addFixedFilter(IQueryable<PartSpecificationStatusData> sql) =>
+            (FixedFilter == nameof(PartSpecificationStatusData.PartSpecificationId)) ? sql.Where(s => s.PartSpecificationId.ToString() == FixedValue)
+                : sql;
     }
 }

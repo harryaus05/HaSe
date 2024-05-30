@@ -4,8 +4,9 @@
 
 @Html.EditItem(model => model.Description)
 
-<div class="form-group">
-    <label asp-for="Type" class="control-label"></label>
+<dt class="col-sm-2"><label class="control-label" for="Type">Type</label></dt>
+
+<dd class="col-sm-10">
     <select asp-for="Type" class="form-control">
         <option value="">-- Select Type --</option>
         <option value="Constraint">Constraint</option>
@@ -16,23 +17,35 @@
         <option value="Other specification">Other specification</option>
     </select>
     <span asp-validation-for="Type" class="text-danger" />
-</div>
+</dd>
 
 @{
-    var p = new ShowTableProperties<PartSpecificationStatusViewModel>(ViewBag);
-    p.MasterController = "partspecification";
-    p.MasterId = Model?.Id;
-    p.IsEditable = false;
-    p.Items = Model?.SpecificationStatus ?? [];
-    p.Controller = "part";
-    p.Label = Html.LabelFor(model => model.SpecificationStatus);
+    ShowTableProperties<TEntity> create<TEntity>() {
+        var p = new ShowTableProperties<TEntity>(ViewBag);
+        p.MasterController = "partspecification";
+        p.MasterId = Model?.Id;
+        p.IsEditable = true;
+        return p;
+    }
+    var p1 = create<PartSpecificationStatusViewModel>();
+    p1.Items = Model?.SpecificationStatus ?? [];
+    p1.Controller = "partspecificationstatus";
+    p1.Label = Html.LabelFor(model => model.SpecificationStatus);
+
+    var p2 = create<PartSpecificationRoleViewModel>();
+    p2.Items = Model?.SpecificationRole ?? [];
+    p2.Controller = "partspecificationrole";
+    p2.Label = Html.LabelFor(model => model.SpecificationRole);
 }
 
 @Html.EditItem(model => model.DateDocumented)
 @Html.EditItem(model => model.Comment)
 @Html.SelectItem(model => model.PartId, "Parts")
 
-@if (ViewBag.IsEditView != null && ViewBag.IsEditView == true)
-    @Html.ShowTable(p)
+@if (ViewBag.IsEditView != null && ViewBag.IsEditView == true) {
+    @Html.ShowTable(p1)
+    @Html.ShowTable(p2)
+}
+
 
 
