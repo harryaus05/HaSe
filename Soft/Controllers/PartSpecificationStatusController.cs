@@ -12,7 +12,6 @@ namespace HaSe.Soft.Controllers {
         protected override async Task<PartSpecificationStatusViewModel> toViewAsync(PartSpecificationStatus m) {
             if (loadlazy) await m.LoadLazy();
             var v = await base.toViewAsync(m);
-            v.PartSpecification = m?.PSpecification?.Select(Copy.Members<PartSpecification, PartSpecificationViewModel>).ToList();
             return v;
         }
     }
